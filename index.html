@@ -3,138 +3,235 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VehicleProof: photo-proof vehicle inspections and records</title>
-  <meta name="description" content="Photo-proof inspections. Service history, documents and renewals. Keep your vehicle's condition and paperwork in one place, with proof you can show.">
+  <title>VehicleProof: your vehicle's history, with proof</title>
+  <meta name="description" content="Photo-proof inspections, service history, documents and renewal reminders for every vehicle you own, rent out or manage.">
   <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/inter-semibold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="canonical" href="https://vehicleproof.app/">
   <meta property="og:title" content="VehicleProof">
-  <meta property="og:description" content="Photo-proof inspections. Service history, documents and renewals.">
+  <meta property="og:description" content="Your vehicle's history, with proof. Photo-proof inspections, service history, documents and renewals.">
   <meta property="og:image" content="https://vehicleproof.app/assets/img/og.png">
   <meta property="og:url" content="https://vehicleproof.app/">
-  <meta name="theme-color" content="#f3f6f9">
+  <meta name="theme-color" content="#ffffff">
+  <script>
+    // Motion starts hidden only when the script can reveal it; if it never
+    // loads, show everything anyway.
+    document.documentElement.classList.add('js');
+    setTimeout(() => { if (!window.vpReady) document.documentElement.classList.remove('js'); }, 2500);
+  </script>
+  <script src="/assets/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
+
+<header class="nav">
   <div class="wrap">
     <a class="brand" href="/"><img src="/assets/img/icon-96.png" alt=""><b>Vehicle<span>Proof</span></b></a>
-    <nav class="site-nav" aria-label="Main">
-      <a href="#features" class="hide-sm">Features</a>
-      <a href="#screenshots" class="hide-sm">Screenshots</a>
-      <a href="/support/">Support</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#story" class="hide-sm">How it works</a>
+      <a href="#gallery" class="hide-sm">Screenshots</a>
       <a href="/privacy/">Privacy</a>
+      <a href="/support/">Support</a>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="wrap hero">
-    <div>
-      <p class="eyebrow">Document. Protect. Prove.</p>
-      <h1>Your vehicle's history, <em>with proof.</em></h1>
-      <p class="lead">Photo-proof inspections, service history, documents and renewal reminders for every vehicle you own, rent out or manage, in one app.</p>
-      <div class="badges">
-        <span class="badge" aria-disabled="true"><span><small>Coming soon on</small>App Store</span></span>
-        <span class="badge" aria-disabled="true"><span><small>Coming soon on</small>Google Play</span></span>
+
+  <!-- Hero -->
+  <section class="hero center">
+    <div class="wrap">
+      <p class="eyebrow reveal">Document. Protect. Prove.</p>
+      <h1 class="display reveal d1">Your vehicle's history.<br><span class="red">With proof.</span></h1>
+      <p class="lede reveal d2">Photo-proof inspections, service history, documents and renewal reminders, for every vehicle you own, rent out or manage.</p>
+      <div class="cta-row reveal d3">
+        <a class="pill pill-red" href="#story">See how it works</a>
+        <a class="pill pill-quiet" href="/support/">Contact us</a>
+      </div>
+      <p class="soon reveal d3">Coming soon to iPhone and Android.</p>
+    </div>
+    <div class="hero-media">
+      <img src="/assets/img/scene-hub-852.webp" srcset="/assets/img/scene-hub-426.webp 426w, /assets/img/scene-hub-852.webp 852w" sizes="(max-width: 600px) 88vw, 470px" width="852" height="1431" alt="The VehicleProof home screen, showing four vehicles in the garage">
+    </div>
+  </section>
+
+  <!-- Sticky inspection story -->
+  <section class="soft" id="story">
+    <div class="wrap">
+      <div class="story-intro center">
+        <p class="eyebrow reveal">Inspections</p>
+        <h2 class="headline reveal d1">Walk around. Tap.<br>Proven.</h2>
+        <p class="lede reveal d2">A guided inspection records the condition of any vehicle in a few minutes, with evidence that's hard to argue with.</p>
+      </div>
+
+      <div class="story">
+        <div class="story-media" aria-hidden="true">
+          <figure><img src="/assets/img/scene-new-inspection-852.webp" width="852" height="1428" alt="" loading="lazy"></figure>
+          <figure><img src="/assets/img/scene-camera-852.webp" width="852" height="1418" alt="" loading="lazy"></figure>
+          <figure><img src="/assets/img/scene-summary-852.webp" width="852" height="1420" alt="" loading="lazy"></figure>
+          <figure><img src="/assets/img/scene-compare-852.webp" width="852" height="1419" alt="" loading="lazy"></figure>
+        </div>
+
+        <div class="steps-col">
+          <article class="step">
+            <div class="step-img"><img src="/assets/img/scene-new-inspection-852.webp" srcset="/assets/img/scene-new-inspection-426.webp 426w, /assets/img/scene-new-inspection-852.webp 852w" sizes="(max-width: 900px) 90vw, 1px" width="852" height="1428" alt="Choosing the inspection type in the app" loading="lazy"></div>
+            <p class="num">01 · Start</p>
+            <h3 class="title">Pick the moment.</h3>
+            <p>A check-in before a rental or handover. A check-out when it comes back. A routine check, or a close look at a car you're about to buy.</p>
+          </article>
+          <article class="step">
+            <div class="step-img"><img src="/assets/img/scene-camera-852.webp" srcset="/assets/img/scene-camera-426.webp 426w, /assets/img/scene-camera-852.webp 852w" sizes="(max-width: 900px) 90vw, 1px" width="852" height="1418" alt="The guided camera photographing the front-right corner of a car" loading="lazy"></div>
+            <p class="num">02 · Capture</p>
+            <h3 class="title">Every angle, guided.</h3>
+            <p>The camera walks you around the vehicle one angle at a time, with zoom and your progress always in view. Nothing gets missed.</p>
+          </article>
+          <article class="step">
+            <div class="step-img"><img src="/assets/img/scene-summary-852.webp" srcset="/assets/img/scene-summary-426.webp 426w, /assets/img/scene-summary-852.webp 852w" sizes="(max-width: 900px) 90vw, 1px" width="852" height="1420" alt="Inspection summary with issues marked around a car" loading="lazy"></div>
+            <p class="num">03 · Review</p>
+            <h3 class="title">Condition at a glance.</h3>
+            <p>Issues are pinned to the exact spot on the car, next to every angle you've captured, and any that are still missing.</p>
+          </article>
+          <article class="step">
+            <div class="step-img"><img src="/assets/img/scene-compare-852.webp" srcset="/assets/img/scene-compare-426.webp 426w, /assets/img/scene-compare-852.webp 852w" sizes="(max-width: 900px) 90vw, 1px" width="852" height="1419" alt="A check-in photo and a check-out photo compared with a slider" loading="lazy"></div>
+            <p class="num">04 · Compare</p>
+            <h3 class="title">Spot what changed.</h3>
+            <p>Put a check-in next to a check-out and drag the slider. New scratches and dents stand out straight away.</p>
+          </article>
+        </div>
       </div>
     </div>
-    <div class="shots">
-      <div class="shot"><img src="/assets/img/app-hub-426.webp" srcset="/assets/img/app-hub-426.webp 426w, /assets/img/app-hub-852.webp 852w" sizes="(max-width: 860px) 46vw, 270px" alt="VehicleProof home screen: your vehicle hub, all in one place" width="852" height="1846"></div>
-      <div class="shot"><img src="/assets/img/app-camera-426.webp" srcset="/assets/img/app-camera-426.webp 426w, /assets/img/app-camera-852.webp 852w" sizes="(max-width: 860px) 46vw, 270px" alt="Guided camera capturing the front-right of a car during an inspection" width="852" height="1846"></div>
-    </div>
   </section>
 
-  <section class="section" id="features">
+  <!-- Statement -->
+  <section class="night center">
     <div class="wrap">
-      <h2>Everything about your vehicle, in one place</h2>
-      <p>Built for owners, families and small fleets who want records that hold up when it matters: a rental return, a resale or an insurance claim.</p>
-      <div class="features">
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
-          <h3>Photo-proof inspections</h3>
-          <p>A guided camera walks you around the vehicle, angle by angle. Each photo is fingerprinted and the finished report is sealed.</p>
-        </article>
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M12 5v14M8 10l-2 2 2 2M16 10l2 2-2 2"/></svg></div>
-          <h3>See what changed</h3>
-          <p>Compare a check-in and a check-out side by side, or with a slider, and spot new scratches and dents straight away.</p>
-        </article>
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z"/></svg></div>
-          <h3>Service history</h3>
-          <p>Log services and repairs, or scan the workshop receipt and let the app read the details for you.</p>
-        </article>
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></div>
-          <h3>Documents</h3>
-          <p>Insurance, road tax and registration papers, kept with the vehicle they belong to, with their expiry dates.</p>
-        </article>
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16V11a6 6 0 0 0-12 0v5l-2 2h16z"/><path d="M10 21h4"/></svg></div>
-          <h3>Renewal reminders</h3>
-          <p>Get a heads-up before road tax, insurance or the next service is due, so nothing lapses by surprise.</p>
-        </article>
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
-          <h3>Private by design</h3>
-          <p>Your records are stored privately, and you can keep documents in your own Google Drive. Delete your account at any time.</p>
-        </article>
+      <p class="eyebrow reveal">Proof that holds up</p>
+      <h2 class="headline reveal d1">Fingerprinted. Timestamped.<br>Sealed.</h2>
+      <p class="lede reveal d2" style="max-width:32em;margin:24px auto 0">Every inspection photo gets a unique digital fingerprint and a timestamp the moment it's taken. Seal the report, and any later change can be detected.</p>
+      <div class="facts">
+        <div class="reveal"><b>9 angles</b><span>Front, rear, both sides, all four corners and the odometer.</span></div>
+        <div class="reveal d1"><b>SHA-256</b><span>A fingerprint for every photo, so edits don't go unnoticed.</span></div>
+        <div class="reveal d2"><b>Sealed</b><span>Finished reports are locked, with any missing angles noted.</span></div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="screenshots">
-    <div class="wrap">
-      <h2>See it in action</h2>
-      <p>From the first check-in photo to the full history of every vehicle.</p>
-      <ul class="gallery" aria-label="App screenshots">
-        <li class="shot"><img src="/assets/img/app-hub-426.webp" srcset="/assets/img/app-hub-426.webp 426w, /assets/img/app-hub-852.webp 852w" sizes="(max-width: 860px) 64vw, 250px" alt="Your vehicle hub, all in one place: the home screen" width="852" height="1846" loading="lazy"></li>
-        <li class="shot"><img src="/assets/img/app-garage-426.webp" srcset="/assets/img/app-garage-426.webp 426w, /assets/img/app-garage-852.webp 852w" sizes="(max-width: 860px) 64vw, 250px" alt="Browse your garage at a glance: the vehicles screen" width="852" height="1846" loading="lazy"></li>
-        <li class="shot"><img src="/assets/img/app-vehicle-426.webp" srcset="/assets/img/app-vehicle-426.webp 426w, /assets/img/app-vehicle-852.webp 852w" sizes="(max-width: 860px) 64vw, 250px" alt="Everything about each vehicle: a car's page with inspections, service, insurance and road tax" width="852" height="1846" loading="lazy"></li>
-        <li class="shot"><img src="/assets/img/app-new-inspection-426.webp" srcset="/assets/img/app-new-inspection-426.webp 426w, /assets/img/app-new-inspection-852.webp 852w" sizes="(max-width: 860px) 64vw, 250px" alt="Start inspections in seconds: choosing check-in, check-out, routine or pre-purchase" width="852" height="1846" loading="lazy"></li>
-        <li class="shot"><img src="/assets/img/app-camera-426.webp" srcset="/assets/img/app-camera-426.webp 426w, /assets/img/app-camera-852.webp 852w" sizes="(max-width: 860px) 64vw, 250px" alt="Capture every angle with guidance: the in-app inspection camera" width="852" height="1846" loading="lazy"></li>
-        <li class="shot"><img src="/assets/img/app-summary-426.webp" srcset="/assets/img/app-summary-426.webp 426w, /assets/img/app-summary-852.webp 852w" sizes="(max-width: 860px) 64vw, 250px" alt="See condition at a glance: inspection summary with issues marked on the car" width="852" height="1846" loading="lazy"></li>
-        <li class="shot"><img src="/assets/img/app-compare-426.webp" srcset="/assets/img/app-compare-426.webp 426w, /assets/img/app-compare-852.webp 852w" sizes="(max-width: 860px) 64vw, 250px" alt="Compare before and after: check-in and check-out photos side by side" width="852" height="1846" loading="lazy"></li>
-        <li class="shot"><img src="/assets/img/app-history-426.webp" srcset="/assets/img/app-history-426.webp 426w, /assets/img/app-history-852.webp 852w" sizes="(max-width: 860px) 64vw, 250px" alt="Track inspection history over time: a vehicle's inspection timeline" width="852" height="1846" loading="lazy"></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section">
+  <!-- Each vehicle -->
+  <section>
     <div class="wrap split">
       <div>
-        <h2>Proof for the moments that matter</h2>
-        <p style="color:var(--muted)">Handing over a rental car, selling your vehicle or making a claim goes more smoothly when the evidence is already organised.</p>
-        <ul class="checks">
-          <li>Check-in and check-out inspections with timestamped photos</li>
-          <li>Damage noted on the exact panel, with severity</li>
-          <li>A shareable report of every inspection</li>
-          <li>Service, expense and document history in one timeline</li>
+        <p class="eyebrow reveal">Records</p>
+        <h2 class="headline reveal d1">Everything about each vehicle.</h2>
+        <p class="lede reveal d2">One page per vehicle, with its whole story.</p>
+        <ul class="rows reveal d3">
+          <li><b>Service history</b><span>Log services and repairs, or scan the workshop receipt and let the app fill it in.</span></li>
+          <li><b>Documents</b><span>Insurance, road tax and registration, with their expiry dates.</span></li>
+          <li><b>Reminders</b><span>A heads-up before road tax, insurance or a service is due.</span></li>
+          <li><b>Expenses</b><span>Running costs, kept with the vehicle they belong to.</span></li>
         </ul>
       </div>
-      <div class="shot"><img src="/assets/img/app-compare-426.webp" srcset="/assets/img/app-compare-426.webp 426w, /assets/img/app-compare-852.webp 852w" sizes="(max-width: 860px) 80vw, 320px" alt="The app comparing a check-in photo with a check-out photo of the same car" width="852" height="1846" loading="lazy"></div>
+      <div class="scene reveal"><img src="/assets/img/scene-vehicle-852.webp" srcset="/assets/img/scene-vehicle-426.webp 426w, /assets/img/scene-vehicle-852.webp 852w" sizes="(max-width: 900px) 90vw, 440px" width="852" height="1437" alt="A car's page in the app, with its inspections, service history, insurance and road tax" loading="lazy"></div>
     </div>
   </section>
 
-  <div class="wrap">
-    <section class="band">
-      <h2>Questions?</h2>
-      <p>Email us at <a href="mailto:vehicleproof999@gmail.com">vehicleproof999@gmail.com</a>, or read how we handle your <a href="/privacy/">data and privacy</a>.</p>
-    </section>
-  </div>
+  <!-- Timeline -->
+  <section class="soft">
+    <div class="wrap split flip">
+      <div>
+        <p class="eyebrow reveal">History</p>
+        <h2 class="headline reveal d1">Every visit, on one timeline.</h2>
+        <p class="lede reveal d2">Inspections, service visits and detected damage, in order. When it's time to sell or hand over, the history is ready to show.</p>
+      </div>
+      <div class="scene reveal"><img src="/assets/img/scene-history-852.webp" srcset="/assets/img/scene-history-426.webp 426w, /assets/img/scene-history-852.webp 852w" sizes="(max-width: 900px) 90vw, 440px" width="852" height="1424" alt="A vehicle's timeline of inspections and service visits" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <div class="wrap gallery-head">
+      <h2 class="headline reveal">Take a closer look.</h2>
+      <div class="gallery-controls">
+        <button class="round" type="button" data-gallery="prev" aria-label="Previous screenshot"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4.5 7 10l5.5 5.5"/></svg></button>
+        <button class="round" type="button" data-gallery="next" aria-label="Next screenshot"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.5 13 10l-5.5 5.5"/></svg></button>
+      </div>
+    </div>
+    <ul class="gallery" aria-label="App screenshots">
+      <li><img src="/assets/img/app-hub-426.webp" srcset="/assets/img/app-hub-426.webp 426w, /assets/img/app-hub-852.webp 852w" sizes="(max-width: 600px) 72vw, 318px" width="852" height="1846" alt="Your vehicle hub, all in one place: the home screen" loading="lazy"></li>
+      <li><img src="/assets/img/app-garage-426.webp" srcset="/assets/img/app-garage-426.webp 426w, /assets/img/app-garage-852.webp 852w" sizes="(max-width: 600px) 72vw, 318px" width="852" height="1846" alt="Browse your garage at a glance: the vehicles screen" loading="lazy"></li>
+      <li><img src="/assets/img/app-vehicle-426.webp" srcset="/assets/img/app-vehicle-426.webp 426w, /assets/img/app-vehicle-852.webp 852w" sizes="(max-width: 600px) 72vw, 318px" width="852" height="1846" alt="Everything about each vehicle: a car's page" loading="lazy"></li>
+      <li><img src="/assets/img/app-new-inspection-426.webp" srcset="/assets/img/app-new-inspection-426.webp 426w, /assets/img/app-new-inspection-852.webp 852w" sizes="(max-width: 600px) 72vw, 318px" width="852" height="1846" alt="Start inspections in seconds: choosing the inspection type" loading="lazy"></li>
+      <li><img src="/assets/img/app-camera-426.webp" srcset="/assets/img/app-camera-426.webp 426w, /assets/img/app-camera-852.webp 852w" sizes="(max-width: 600px) 72vw, 318px" width="852" height="1846" alt="Capture every angle with guidance: the inspection camera" loading="lazy"></li>
+      <li><img src="/assets/img/app-summary-426.webp" srcset="/assets/img/app-summary-426.webp 426w, /assets/img/app-summary-852.webp 852w" sizes="(max-width: 600px) 72vw, 318px" width="852" height="1846" alt="See condition at a glance: the inspection summary" loading="lazy"></li>
+      <li><img src="/assets/img/app-compare-426.webp" srcset="/assets/img/app-compare-426.webp 426w, /assets/img/app-compare-852.webp 852w" sizes="(max-width: 600px) 72vw, 318px" width="852" height="1846" alt="Compare before and after: check-in and check-out photos" loading="lazy"></li>
+      <li><img src="/assets/img/app-history-426.webp" srcset="/assets/img/app-history-426.webp 426w, /assets/img/app-history-852.webp 852w" sizes="(max-width: 600px) 72vw, 318px" width="852" height="1846" alt="Track inspection history over time: the inspection timeline" loading="lazy"></li>
+    </ul>
+  </section>
+
+  <!-- Privacy -->
+  <section class="soft center">
+    <div class="wrap">
+      <p class="eyebrow reveal">Privacy</p>
+      <h2 class="headline reveal d1">Your records.<br>Your control.</h2>
+      <p class="lede reveal d2" style="max-width:28em;margin:24px auto 0">No ads, no trackers, and we never sell your data. Just a safe home for your vehicle's paperwork.</p>
+      <div class="pillars">
+        <div class="reveal"><b>Stored in Singapore</b><span>Private storage, opened only through short-lived links after we've checked it's you.</span></div>
+        <div class="reveal d1"><b>Your own Google Drive</b><span>Keep documents in your Drive if you prefer. The app only sees files it creates.</span></div>
+        <div class="reveal d2"><b>Delete anytime</b><span>Remove your account in the app or by email. Your data is permanently deleted after 30 days.</span></div>
+      </div>
+      <p class="reveal" style="margin-top:48px"><a class="link-arrow" href="/privacy/">Read the privacy policy</a></p>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section class="closing center">
+    <div class="wrap">
+      <img class="reveal" src="/assets/img/apple-touch-icon.png" width="180" height="180" alt="">
+      <h2 class="headline reveal d1">Coming soon.</h2>
+      <p class="lede reveal d2">VehicleProof is on its way to iPhone and Android. Questions before then? We'd love to hear from you.</p>
+      <div class="cta-row reveal d3">
+        <a class="pill pill-red" href="mailto:vehicleproof999@gmail.com?subject=VehicleProof">Email us</a>
+        <a class="pill pill-quiet" href="/support/">Support</a>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer class="site-footer">
+<footer class="footer">
   <div class="wrap">
-    <span>© 2026 FoundryOps. VehicleProof is operated from Malaysia.</span>
-    <nav aria-label="Footer">
-      <a href="/privacy/">Privacy Policy</a>
-      <a href="/terms/">Terms of Service</a>
-      <a href="/delete-account/">Delete your account</a>
-      <a href="/support/">Support</a>
-    </nav>
+    <div class="footer-top">
+      <div>
+        <a class="brand" href="/"><img src="/assets/img/icon-96.png" alt=""><b>Vehicle<span>Proof</span></b></a>
+        <p>Document. Protect. Prove.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/#story">How it works</a></li>
+          <li><a href="/#gallery">Screenshots</a></li>
+          <li><a href="/support/">Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Legal</h2>
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/delete-account/">Delete your account</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:vehicleproof999@gmail.com">vehicleproof999@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 FoundryOps. All rights reserved.</span>
+      <span>VehicleProof is operated from Malaysia.</span>
+    </div>
   </div>
 </footer>
 </body>
