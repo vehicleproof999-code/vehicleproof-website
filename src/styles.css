@@ -1,8 +1,8 @@
 /* VehicleProof website. Quiet, editorial, product first. Brand red matches the app. */
 
-@font-face { font-family: Inter; font-weight: 400; font-display: swap; src: url(fonts/inter-regular.woff2) format("woff2"); }
-@font-face { font-family: Inter; font-weight: 600; font-display: swap; src: url(fonts/inter-semibold.woff2) format("woff2"); }
-@font-face { font-family: Inter; font-weight: 800; font-display: swap; src: url(fonts/inter-extrabold.woff2) format("woff2"); }
+@font-face { font-family: Inter; font-weight: 400; font-display: swap; src: url(/assets/fonts/inter-regular.woff2) format("woff2"); }
+@font-face { font-family: Inter; font-weight: 600; font-display: swap; src: url(/assets/fonts/inter-semibold.woff2) format("woff2"); }
+@font-face { font-family: Inter; font-weight: 800; font-display: swap; src: url(/assets/fonts/inter-extrabold.woff2) format("woff2"); }
 
 :root {
   --red: #e91223;
@@ -160,6 +160,11 @@ section { padding: clamp(96px, 12vw, 160px) 0; }
 .pillars div { border-top: 1px solid var(--hair); padding-top: 22px; }
 .pillars b { display: block; font-size: 21px; font-weight: 600; letter-spacing: -.02em; }
 .pillars span { display: block; margin-top: 8px; color: var(--muted); }
+
+/* Section-specific text widths (were inline styles) */
+.statement .lede { max-width: 32em; margin: 24px auto 0; }
+.privacy .lede { max-width: 28em; margin: 24px auto 0; }
+.privacy .more { margin: 48px 0 0; }
 
 /* Closing */
 .closing img { width: 84px; height: 84px; border-radius: 20px; margin: 0 auto 28px; box-shadow: 0 0 0 1px var(--hair), 0 10px 24px -14px rgba(0, 0, 0, .3); }
