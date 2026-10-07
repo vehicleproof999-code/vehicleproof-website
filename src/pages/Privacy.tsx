@@ -3,7 +3,7 @@ export default function Privacy() {
   return (
     <>
     <h1>Privacy Policy</h1>
-    <p className="updated">Effective 27 September 2026</p>
+    <p className="updated">Effective 8 October 2026</p>
 
     <div className="summary">
       <p><strong>In short:</strong> we use your data to run VehicleProof for you, nothing else. We don't sell it, we don't show ads, and the app has no advertising or analytics trackers. Your records are stored in Singapore. You can see, correct, export or delete your data at any time, and deleting your account in the app removes it.</p>
@@ -18,13 +18,14 @@ export default function Privacy() {
       <table>
         <thead><tr><th>Data</th><th>What it includes</th><th>Where it comes from</th></tr></thead>
         <tbody>
-          <tr><td>Account</td><td>Name, email address, sign-in method (email and password, Google or Apple). Your password is held by our sign-in provider; we never see it.</td><td>You, or Google or Apple when you sign in with them</td></tr>
+          <tr><td>Account</td><td>Name, email address, sign-in method (email and password, or Google). Your password is held by our sign-in provider; we never see it.</td><td>You, or Google when you sign in with it</td></tr>
           <tr><td>Vehicles</td><td>Registration number, make, model, year, colour, fuel type, odometer readings, cover photo</td><td>You</td></tr>
           <tr><td>Inspections</td><td>Photos of the vehicle, damage notes, dates and times, and a digital fingerprint (SHA-256) of each photo</td><td>You, through the in-app camera</td></tr>
           <tr><td>Records and documents</td><td>Service and repair records, expenses, workshop names and amounts, receipts, insurance, road tax and registration documents, and notes</td><td>You. Documents can contain other personal details, such as an owner's name or ID number on a registration card.</td></tr>
           <tr><td>Scanned documents</td><td>The text read from receipts and documents you choose to scan</td><td>Produced from your scan</td></tr>
           <tr><td>Location</td><td>Your approximate location, only when you search for places nearby</td><td>Your phone, with your permission</td></tr>
           <tr><td>Device</td><td>Device model and name, operating system, app version, and a notification token if you allow notifications</td><td>Your phone</td></tr>
+          <tr><td>Crash reports</td><td>When the app or our servers hit an unexpected error: what went wrong, the app version, phone model, operating system and the screens visited just before, with an anonymous ID. Never your name, email, photos or documents.</td><td>The app and our servers</td></tr>
           <tr><td>Subscription</td><td>Your plan and whether a subscription is active. We never receive your card details.</td><td>Apple App Store or Google Play</td></tr>
           <tr><td>Enterprise enquiries</td><td>Name, email, phone, company and your message</td><td>You, if you request an Enterprise quote</td></tr>
           <tr><td>Security logs</td><td>What was done in your account and when, with your IP address and browser details stored only in a scrambled (hashed) form</td><td>Our servers</td></tr>
@@ -53,14 +54,15 @@ export default function Privacy() {
       <table>
         <thead><tr><th>Provider</th><th>What for</th><th>Location</th></tr></thead>
         <tbody>
-          <tr><td>Clerk</td><td>Sign-in and account security</td><td>United States</td></tr>
+          <tr><td>Auth0 (by Okta)</td><td>Sign-in, email confirmation and account security</td><td>Australia</td></tr>
           <tr><td>DigitalOcean</td><td>Servers and private file storage</td><td>Singapore</td></tr>
           <tr><td>Supabase (on Amazon Web Services)</td><td>Database</td><td>Singapore</td></tr>
           <tr><td>Mistral AI</td><td>Reading the text of receipts and documents you choose to scan</td><td>European Union</td></tr>
           <tr><td>Google</td><td>Google sign-in; Google Drive, only if you connect it; Firebase Cloud Messaging for notifications, which receives only the alert title, never your documents</td><td>United States and others</td></tr>
-          <tr><td>Apple</td><td>Sign in with Apple, App Store purchases and notifications on iPhone</td><td>United States and others</td></tr>
+          <tr><td>Apple</td><td>App Store purchases and notifications on iPhone</td><td>United States and others</td></tr>
           <tr><td>RevenueCat</td><td>Checking the status of App Store and Google Play subscriptions</td><td>United States</td></tr>
           <tr><td>Resend</td><td>Sending emails, such as Enterprise quote requests</td><td>United States</td></tr>
+          <tr><td>Sentry</td><td>Crash and error reports, so we can find and fix problems. Reports carry an anonymous ID, never your name, email, photos or documents.</td><td>United States</td></tr>
           <tr><td>OpenStreetMap (Overpass API)</td><td>Finding nearby places. It receives an approximate location, not who you are.</td><td>Germany</td></tr>
         </tbody>
       </table>
