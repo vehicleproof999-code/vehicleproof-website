@@ -18,7 +18,7 @@ export default function Privacy() {
       <table>
         <thead><tr><th>Data</th><th>What it includes</th><th>Where it comes from</th></tr></thead>
         <tbody>
-          <tr><td>Account</td><td>Name, email address, sign-in method (email and password, or Google). Your password is held by our sign-in provider; we never see it.</td><td>You, or Google when you sign in with it</td></tr>
+          <tr><td>Account</td><td>Name, email address, sign-in method (email and password, Google or Apple). Your password is held by our sign-in provider; we never see it. With Apple you can hide your email: we then receive a private relay address.</td><td>You, or Google or Apple when you sign in with them</td></tr>
           <tr><td>Vehicles</td><td>Registration number, make, model, year, colour, fuel type, odometer readings, cover photo</td><td>You</td></tr>
           <tr><td>Inspections</td><td>Photos of the vehicle, damage notes, dates and times, and a digital fingerprint (SHA-256) of each photo</td><td>You, through the in-app camera</td></tr>
           <tr><td>Records and documents</td><td>Service and repair records, expenses, workshop names and amounts, receipts, insurance, road tax and registration documents, and notes</td><td>You. Documents can contain other personal details, such as an owner's name or ID number on a registration card.</td></tr>
@@ -59,7 +59,7 @@ export default function Privacy() {
           <tr><td>Supabase (on Amazon Web Services)</td><td>Database</td><td>Singapore</td></tr>
           <tr><td>Mistral AI</td><td>Reading the text of receipts and documents you choose to scan</td><td>European Union</td></tr>
           <tr><td>Google</td><td>Google sign-in; Google Drive, only if you connect it; Firebase Cloud Messaging for notifications, which receives only the alert title, never your documents</td><td>United States and others</td></tr>
-          <tr><td>Apple</td><td>App Store purchases and notifications on iPhone</td><td>United States and others</td></tr>
+          <tr><td>Apple</td><td>Sign in with Apple, App Store purchases and notifications on iPhone</td><td>United States and others</td></tr>
           <tr><td>RevenueCat</td><td>Checking the status of App Store and Google Play subscriptions</td><td>United States</td></tr>
           <tr><td>Resend</td><td>Sending emails, such as Enterprise quote requests</td><td>United States</td></tr>
           <tr><td>Sentry</td><td>Crash and error reports, so we can find and fix problems. Reports carry an anonymous ID, never your name, email, photos or documents.</td><td>United States</td></tr>
