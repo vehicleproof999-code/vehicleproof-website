@@ -1,80 +1,48 @@
-import { supportEmail, tagline } from '../site';
-
-function Brand() {
-  return (
-    <a className="brand" href="/">
-      <img src="/assets/img/icon-96.png" alt="" width={28} height={28} />
-      <b>Vehicle<span>Proof</span></b>
-    </a>
-  );
-}
+import { businessMail, supportEmail } from '../site';
 
 const navLinks = [
-  { href: '/#story', label: 'How it works', wideOnly: true },
-  { href: '/#gallery', label: 'Screenshots', wideOnly: true },
+  { href: '/#inspections', label: 'Inspections' },
+  { href: '/#business', label: 'Business' },
+  { href: '/#web-app', label: 'Web app' },
+  { href: '/#plans', label: 'Plans' },
   { href: '/privacy/', label: 'Privacy' },
   { href: '/support/', label: 'Support' },
 ];
 
-/** The slim top bar. [current] marks the page you're on. */
+/** The thin top bar: the icon, centred links and one button. [current] marks the page you're on. */
 export function Nav({ current }: { current: string }) {
   return (
     <header className="nav">
       <div className="wrap">
-        <Brand />
+        <a className="brand" href="/" aria-label="VehicleProof home">
+          <img src="/assets/img/icon-96.png" alt="" width={24} height={24} />
+        </a>
         <nav className="nav-links" aria-label="Main">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={link.wideOnly ? 'hide-sm' : undefined}
-              aria-current={link.href === current ? 'page' : undefined}
-            >
+            <a key={link.href} href={link.href} aria-current={link.href === current ? 'page' : undefined}>
               {link.label}
             </a>
           ))}
         </nav>
+        <a className="pill pill-small" href={businessMail}>Talk to us</a>
       </div>
     </header>
   );
 }
 
+/** One quiet line: who runs the site, and the legal and help pages. */
 export function Footer() {
   return (
     <footer className="footer">
       <div className="wrap">
-        <div className="footer-top">
-          <div>
-            <Brand />
-            <p>{tagline}</p>
-          </div>
-          <div>
-            <h2>Product</h2>
-            <ul>
-              <li><a href="/#story">How it works</a></li>
-              <li><a href="/#gallery">Screenshots</a></li>
-              <li><a href="/support/">Support</a></li>
-            </ul>
-          </div>
-          <div>
-            <h2>Legal</h2>
-            <ul>
-              <li><a href="/privacy/">Privacy Policy</a></li>
-              <li><a href="/terms/">Terms of Service</a></li>
-              <li><a href="/delete-account/">Delete your account</a></li>
-            </ul>
-          </div>
-          <div>
-            <h2>Contact</h2>
-            <ul>
-              <li><a href={`mailto:${supportEmail}`}>{supportEmail}</a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <span>© 2026 FoundryOps. All rights reserved.</span>
-          <span>VehicleProof is operated from Malaysia.</span>
-        </div>
+        <span>© 2026 FoundryOps. Operated from Malaysia.</span>
+        <nav aria-label="Footer">
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/support/">Support</a>
+          <a href="/delete-account/">Delete account</a>
+          <a href={`mailto:${supportEmail}`}>{supportEmail}</a>
+        </nav>
       </div>
     </footer>
   );

@@ -20,8 +20,8 @@ export type Route = {
 export const routes: Route[] = [
   {
     path: '/', page: Home, document: false,
-    title: "VehicleProof: your vehicle's history, with proof",
-    description: 'Photo-proof inspections, service history, documents and renewal reminders for every vehicle you own, rent out or manage.',
+    title: 'VehicleProof: inspections and records for every car and fleet',
+    description: 'Photo-proof vehicle inspections, service history, documents and renewal reminders, for your own car or a whole fleet. With a web app for rental companies, dealers and fleet managers.',
   },
   {
     path: '/privacy/', page: Privacy, document: true,
