@@ -2,7 +2,9 @@ import { Browser } from '../components/Browser';
 import { Iphone, type ScreenName } from '../components/Iphone';
 import { Plans } from '../components/Plans';
 import { Reveal } from '../components/Reveal';
-import { businessMail, supportEmail } from '../site';
+import { businesses } from '../content';
+import { LOCAL, useMarket } from '../market';
+import { contactHref, supportEmail } from '../site';
 
 const steps: { screen: ScreenName; title: string; text: string; alt: string }[] = [
   {
@@ -16,25 +18,6 @@ const steps: { screen: ScreenName; title: string; text: string; alt: string }[] 
   {
     screen: 'compare', title: 'Spot what changed.', text: 'Slide between check-out and check-in. New damage stands out.',
     alt: 'A check-out photo and a check-in photo compared with a slider',
-  },
-];
-
-const businesses = [
-  {
-    who: 'Car rental', title: 'Every handover, settled.',
-    text: 'Check out and check in with guided photos. New damage sits side by side with the last rental, so a dispute ends with a photo, not an argument.',
-  },
-  {
-    who: 'Used car dealers', title: 'Sell with a history buyers trust.',
-    text: 'Inspect at trade-in, log the reconditioning work, and hand every buyer a sealed condition report.',
-  },
-  {
-    who: 'Company fleets', title: 'Every vehicle, road-legal.',
-    text: 'Road tax, insurance and service dates for the whole fleet, with a reminder before anything lapses.',
-  },
-  {
-    who: 'Delivery and ride-hailing', title: 'Many drivers. One record.',
-    text: "Drivers inspect on their own phones. Managers see every vehicle's condition and running costs in one place.",
   },
 ];
 
@@ -60,6 +43,7 @@ const privacy = [
 const delays = [undefined, 1, 2, 3] as const;
 
 export default function Home() {
+  const market = useMarket();
   return (
     <>
       <section className="hero">
@@ -67,11 +51,12 @@ export default function Home() {
           <Reveal as="p" className="kicker">VehicleProof</Reveal>
           <Reveal as="h1" delay={1} className="display">Proof, for every car.</Reveal>
           <Reveal as="p" delay={2} className="lede">
-            Photo inspections, service history and documents. For your own car, or a whole fleet.
+            Photo inspections that settle damage disputes, plus service history and renewals.
+            For rental companies, dealers and fleets, or just your own car.
           </Reveal>
-          <Reveal delay={3} className="links-row">
+          <Reveal delay={3} className="links-row hero-actions">
+            <a className="pill" href="/business/">For business</a>
             <a className="link-arrow" href="#inspections">See how it works</a>
-            <a className="link-arrow" href="#business">For business</a>
           </Reveal>
           <Reveal delay={3} className="hero-phone">
             <Iphone screen="home" size="hero" eager alt="The VehicleProof home screen, with the garage and records" />
@@ -103,14 +88,15 @@ export default function Home() {
             From five cars to five hundred. Every vehicle inspected, insured and road-legal, without the spreadsheets.
           </Reveal>
           <div className="cards">
-            {businesses.map((card, i) => (
-              <Reveal key={card.who} delay={delays[i % 2]} className="card">
+            {businesses(market).map((card, i) => (
+              <Reveal key={card.id} as="a" href={`/business/#${card.id}`} delay={delays[i % 2]} className="card card-link">
                 <p className="who">{card.who}</p>
                 <h3>{card.title}</h3>
                 <p>{card.text}</p>
               </Reveal>
             ))}
           </div>
+          <Reveal as="p" className="note big-note"><a className="link-arrow" href="/business/">VehicleProof for business</a></Reveal>
         </div>
       </section>
 
@@ -165,7 +151,7 @@ export default function Home() {
             <Reveal delay={1} className="tile">
               <p className="tile-kicker">Reminders</p>
               <h3>Never miss<br />a renewal.</h3>
-              <p>Road tax, insurance and services, before they're due.</p>
+              <p>{LOCAL[market].renewals}, before they're due.</p>
               <Iphone screen="alerts" size="tile" alt="Renewal and service alerts in the app" />
             </Reveal>
           </div>
@@ -198,10 +184,10 @@ export default function Home() {
           <Reveal as="img" src="/assets/img/apple-touch-icon.png" width={180} height={180} alt="" />
           <Reveal as="h2" delay={1} className="headline">Coming soon.</Reveal>
           <Reveal as="p" delay={2} className="lede">
-            On its way to iPhone and Android. Running a fleet? Let's talk before launch.
+            On its way to iPhone and Android. Running a fleet? Get set up before launch.
           </Reveal>
           <Reveal delay={3} className="closing-actions">
-            <a className="pill" href={businessMail}>Talk to us</a>
+            <a className="pill" href={contactHref}>Talk to us</a>
             <div className="links-row">
               <a className="link-arrow" href="/support/">Support</a>
               <a className="link-arrow" href={`mailto:${supportEmail}?subject=VehicleProof`}>Email us</a>

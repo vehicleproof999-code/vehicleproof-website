@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
 const template = readFileSync(join(dist, 'index.html'), 'utf8');
-const { render, routes } = await import(pathToFileURL(join(root, '.ssr', 'entry-server.js')).href);
+const { render, routes, siteUrl } = await import(pathToFileURL(join(root, '.ssr', 'entry-server.js')).href);
 
 for (const route of routes) {
   const { head, html } = render(route);
@@ -18,4 +18,10 @@ for (const route of routes) {
   writeFileSync(file, page);
   console.log(`  ${route.path.padEnd(18)} ${(page.length / 1024).toFixed(1)} kB`);
 }
+
+// Every indexed page, for search engines (robots.txt points here).
+const urls = routes.filter((route) => !route.noindex).map((route) => `  <url><loc>${siteUrl}${route.path}</loc></url>`);
+writeFileSync(join(dist, 'sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`);
+console.log(`  sitemap.xml        ${urls.length} pages`);
 rmSync(join(root, '.ssr'), { recursive: true, force: true });

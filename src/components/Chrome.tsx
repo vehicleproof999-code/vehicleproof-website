@@ -1,8 +1,8 @@
-import { businessMail, supportEmail } from '../site';
+import { contactHref, supportEmail } from '../site';
 
 const navLinks = [
   { href: '/#inspections', label: 'Inspections' },
-  { href: '/#business', label: 'Business' },
+  { href: '/business/', label: 'Business' },
   { href: '/#web-app', label: 'Web app' },
   { href: '/#plans', label: 'Plans' },
   { href: '/privacy/', label: 'Privacy' },
@@ -24,7 +24,7 @@ export function Nav({ current }: { current: string }) {
             </a>
           ))}
         </nav>
-        <a className="pill pill-small" href={businessMail}>Talk to us</a>
+        <a className="pill pill-small" href={contactHref}>Talk to us</a>
       </div>
     </header>
   );
@@ -35,7 +35,7 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="wrap">
-        <span>© 2026 FoundryOps. Operated from Malaysia.</span>
+        <span>© 2026 FoundryOps. Made in Malaysia, for fleets everywhere.</span>
         <nav aria-label="Footer">
           <a href="/privacy/">Privacy</a>
           <a href="/terms/">Terms</a>

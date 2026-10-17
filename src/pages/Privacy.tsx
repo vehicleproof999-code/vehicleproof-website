@@ -3,7 +3,7 @@ export default function Privacy() {
   return (
     <>
     <h1>Privacy Policy</h1>
-    <p className="updated">Effective 8 October 2026</p>
+    <p className="updated">Effective 18 October 2026</p>
 
     <div className="summary">
       <p><strong>In short:</strong> we use your data to run VehicleProof for you, nothing else. We don't sell it, we don't show ads, and the app has no advertising or analytics trackers. Your records are stored in Singapore. You can see, correct, export or delete your data at any time, and deleting your account in the app removes it.</p>
@@ -27,7 +27,7 @@ export default function Privacy() {
           <tr><td>Device</td><td>Device model and name, operating system, app version, and a notification token if you allow notifications</td><td>Your phone</td></tr>
           <tr><td>Crash reports</td><td>When the app or our servers hit an unexpected error: what went wrong, the app version, phone model, operating system and the screens visited just before, with an anonymous ID. Never your name, email, photos or documents.</td><td>The app and our servers</td></tr>
           <tr><td>Subscription</td><td>Your plan and whether a subscription is active. We never receive your card details.</td><td>Apple App Store or Google Play</td></tr>
-          <tr><td>Enterprise enquiries</td><td>Name, email, phone, company and your message</td><td>You, if you request an Enterprise quote</td></tr>
+          <tr><td>Business enquiries</td><td>Name, email, phone, company, country, type of business, fleet size and your message. To stop the form being misused, a scrambled (hashed) form of your IP address.</td><td>You, if you request an Enterprise quote or send the business enquiry form on this website</td></tr>
           <tr><td>Security logs</td><td>What was done in your account and when, with your IP address and browser details stored only in a scrambled (hashed) form</td><td>Our servers</td></tr>
           <tr><td>Support</td><td>Emails you send us</td><td>You</td></tr>
         </tbody>
@@ -43,7 +43,7 @@ export default function Privacy() {
       <li>To find service centres, fuel and charging stations near you, when you ask.</li>
       <li>To manage your plan, device limits and subscription.</li>
       <li>To keep the service secure: detect abuse, limit misuse and investigate problems.</li>
-      <li>To reply to support requests and Enterprise enquiries.</li>
+      <li>To reply to support requests and business enquiries.</li>
       <li>To meet legal obligations.</li>
     </ul>
     <p>We don't sell your data, use it for advertising, or use your photos and documents to train AI models.</p>
@@ -61,7 +61,7 @@ export default function Privacy() {
           <tr><td>Google</td><td>Google sign-in; Google Drive, only if you connect it; Firebase Cloud Messaging for notifications, which receives only the alert title, never your documents</td><td>United States and others</td></tr>
           <tr><td>Apple</td><td>Sign in with Apple, App Store purchases and notifications on iPhone</td><td>United States and others</td></tr>
           <tr><td>RevenueCat</td><td>Checking the status of App Store and Google Play subscriptions</td><td>United States</td></tr>
-          <tr><td>Resend</td><td>Sending emails, such as Enterprise quote requests</td><td>United States</td></tr>
+          <tr><td>Resend</td><td>Sending emails, such as Enterprise quote requests and business enquiries</td><td>United States</td></tr>
           <tr><td>Sentry</td><td>Crash and error reports, so we can find and fix problems. Reports carry an anonymous ID, never your name, email, photos or documents.</td><td>United States</td></tr>
           <tr><td>OpenStreetMap (Overpass API)</td><td>Finding nearby places. It receives an approximate location, not who you are.</td><td>Germany</td></tr>
         </tbody>
@@ -85,6 +85,7 @@ export default function Privacy() {
           <tr><td>Security logs</td><td>12 months, without your name or email</td></tr>
           <tr><td>Nearby searches</td><td>Not saved to your account. Results are cached on our server for about 5 minutes.</td></tr>
           <tr><td>Support emails</td><td>As long as needed to resolve your request</td></tr>
+          <tr><td>Business enquiries</td><td>As long as needed to reply and, if you become a customer, to set up your account</td></tr>
         </tbody>
       </table>
     </div>

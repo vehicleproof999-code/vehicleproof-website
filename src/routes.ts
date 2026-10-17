@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react';
+import Business from './pages/Business';
 import DeleteAccount from './pages/DeleteAccount';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
@@ -22,6 +23,11 @@ export const routes: Route[] = [
     path: '/', page: Home, document: false,
     title: 'VehicleProof: inspections and records for every car and fleet',
     description: 'Photo-proof vehicle inspections, service history, documents and renewal reminders, for your own car or a whole fleet. With a web app for rental companies, dealers and fleet managers.',
+  },
+  {
+    path: '/business/', page: Business, document: false,
+    title: 'VehicleProof for business: vehicle inspections for rental, dealers and fleets',
+    description: 'Guided photo inspections, sealed damage reports and renewal reminders for car rental companies, used car dealers and fleets, in any country. Drivers inspect on their phones; managers see everything in the web app.',
   },
   {
     path: '/privacy/', page: Privacy, document: true,

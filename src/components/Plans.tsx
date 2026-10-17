@@ -1,19 +1,9 @@
-import { useEffect, useState, type CSSProperties } from 'react';
-import { supportEmail } from '../site';
+import { useState, type CSSProperties } from 'react';
+import { PRICES, SELF_SERVE_MAX, useMarket } from '../market';
 import { Reveal } from './Reveal';
-
-// The same prices the App Store and Google Play charge (see docs/SUBSCRIPTIONS.md in
-// the app repo). Malaysia pays in ringgit; elsewhere the store converts from USD.
-type Currency = 'MYR' | 'USD';
-
-const PRICES: Record<Currency, { pro: string; tiers: Record<number, string> }> = {
-  MYR: { pro: 'RM39', tiers: { 20: 'RM150', 25: 'RM187.50', 30: 'RM225', 35: 'RM262.50', 40: 'RM300' } },
-  USD: { pro: '$14.99', tiers: { 20: '$50', 25: '$62.50', 30: '$79.90', 35: '$89.90', 40: '$99.90' } },
-};
 
 // Up to 40 vehicles Enterprise is a store subscription in steps of 5, as in the app.
 // Above that it's a quote, so the stops spread out to keep the store tiers easy to hit.
-const SELF_SERVE_MAX = 40;
 const STOPS = [20, 25, 30, 35, 40, 50, 60, 70, 80, 90, 100, 125, 150, 175, 200, 250, 300, 350, 400, 450, 500];
 
 // Allowances grow with the vehicles paid for (backend BillingPlan).
@@ -25,14 +15,6 @@ const storage = (vehicles: number) => {
   const gb = vehicles * GB_PER_VEHICLE;
   return gb >= 1000 ? `${+(gb / 1000).toFixed(2)} TB` : `${+gb.toFixed(1)} GB`;
 };
-
-/** Ringgit for visitors in Malaysia (time zone or device region, as the app guesses), USD for everyone else. */
-function guessCurrency(): Currency {
-  const zone = Intl.DateTimeFormat().resolvedOptions().timeZone ?? '';
-  const languages = navigator.languages ?? [navigator.language];
-  const malaysia = zone === 'Asia/Kuala_Lumpur' || zone === 'Asia/Kuching' || languages.some((l) => /-MY$/i.test(l));
-  return malaysia ? 'MYR' : 'USD';
-}
 
 const Check = () => (
   <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -50,14 +32,12 @@ const Features = ({ items }: { items: string[] }) => (
 
 export function Plans() {
   // Pre-rendered pages show USD; Malaysia switches to ringgit once the page loads.
-  const [currency, setCurrency] = useState<Currency>('USD');
+  const market = useMarket();
   const [stop, setStop] = useState(0);
-  useEffect(() => setCurrency(guessCurrency()), []);
 
-  const prices = PRICES[currency];
+  const prices = PRICES[market];
   const vehicles = STOPS[stop];
   const quote = vehicles > SELF_SERVE_MAX;
-  const quoteMail = `mailto:${supportEmail}?subject=${encodeURIComponent(`VehicleProof Enterprise quote: ${vehicles} vehicles`)}`;
 
   return (
     <>
@@ -124,13 +104,16 @@ export function Plans() {
               'The web app, for the office',
             ]}
           />
-          {quote && <a className="link-arrow" href={quoteMail}>Request a quote</a>}
+          <a className="link-arrow" href={`/business/?fleet=${vehicles}#contact`}>
+            {quote ? 'Request a quote' : 'Book a demo'}
+          </a>
         </Reveal>
       </div>
 
       <Reveal as="p" className="note">
         Billed monthly through the App Store or Google Play. Cancel anytime.
-        {currency === 'USD' && ' Outside the US, the store shows the price in your own currency.'}
+        {market === 'INTL' && ' Outside the US, the store shows the price in your own currency.'}
+        {' '}Over {SELF_SERVE_MAX} vehicles, we agree the price with you.
       </Reveal>
     </>
   );

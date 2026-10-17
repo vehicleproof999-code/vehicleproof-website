@@ -4,7 +4,7 @@ import App from './App';
 import { routes, type Route } from './routes';
 import { siteUrl } from './site';
 
-export { routes };
+export { routes, siteUrl };
 
 const escape = (text: string) =>
   text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
