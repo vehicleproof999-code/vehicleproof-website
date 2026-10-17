@@ -44,23 +44,22 @@ export function Calculator({ market }: { market: Market }) {
     <div className="calc">
       <div className="calc-inputs">
         <Field id="calc-vehicles" label="Vehicles" value={vehicles} min={1} max={2000} onChange={setVehicles} />
-        <Field id="calc-disputes" label="Damage disputes a month" hint="Damage found on return that the customer or driver denies"
-          value={disputes} min={0} max={500} onChange={setDisputes} />
+        <Field id="calc-disputes" label="Damage disputes a month" value={disputes} min={0} max={500} onChange={setDisputes} />
         <Field id="calc-claim" label={`Average repair bill (${LOCAL[market].symbol})`} value={claim} min={0} max={100000}
           onChange={setClaim} />
       </div>
       <div className="calc-results" aria-live="polite">
         <div>
           <b>{money(market, atRisk)}</b>
-          <span>of damage a month that only proof will recover</span>
+          <span>of disputed damage a month</span>
         </div>
         <div>
           <b>{plan.estimate ? 'About ' : ''}{money(market, plan.amount)}</b>
-          <span>a month for VehicleProof Enterprise, {vehicles} {vehicles === 1 ? 'vehicle' : 'vehicles'}</span>
+          <span>a month for VehicleProof</span>
         </div>
         <div className="calc-verdict">
           <b>{months >= 12 ? 'A whole year' : months < 1 ? 'Less than a month' : months === 1 ? '1 month' : `${months} months`}</b>
-          <span>of VehicleProof, paid for by one repair bill you can prove.</span>
+          <span>paid for by one proven repair bill</span>
         </div>
       </div>
     </div>

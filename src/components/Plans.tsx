@@ -30,7 +30,8 @@ const Features = ({ items }: { items: string[] }) => (
   </ul>
 );
 
-export function Plans() {
+/** Personal: Free and Pro. Business: Enterprise with its slider, and larger fleets. */
+export function Plans({ audience }: { audience: 'business' | 'personal' }) {
   // Pre-rendered pages show USD; Malaysia switches to ringgit once the page loads.
   const market = useMarket();
   const [stop, setStop] = useState(0);
@@ -38,39 +39,56 @@ export function Plans() {
   const prices = PRICES[market];
   const vehicles = STOPS[stop];
   const quote = vehicles > SELF_SERVE_MAX;
+  const storeNote = (
+    <>
+      Billed monthly through the App Store or Google Play. Cancel anytime.
+      {market === 'INTL' && ' Outside the US, the store shows the price in your own currency.'}
+    </>
+  );
+
+  if (audience === 'personal') {
+    return (
+      <>
+        <div className="columns two plans">
+          <Reveal className="plan">
+            <b>Free</b>
+            <p className="plan-kicker">One car</p>
+            <p className="price">Free<span> forever</span></p>
+            <Features
+              items={[
+                '1 vehicle on 1 device',
+                '250 MB evidence storage',
+                '5 document scans and 5 sealed inspections a month',
+                '30 days of comparison history',
+              ]}
+            />
+          </Reveal>
+
+          <Reveal delay={1} className="plan">
+            <b>Pro</b>
+            <p className="plan-kicker">Family plan</p>
+            <p className="price">{prices.pro}<span> / month</span></p>
+            <Features
+              items={[
+                '6 vehicles, shared on up to 6 devices',
+                '5 GB evidence storage',
+                '50 document scans every month',
+                'Unlimited sealed inspections and full comparisons',
+              ]}
+            />
+          </Reveal>
+        </div>
+        <Reveal as="p" className="note">
+          {storeNote} Running a business? <a href="/#plans">See Enterprise</a>.
+        </Reveal>
+      </>
+    );
+  }
 
   return (
     <>
-      <div className="columns three plans">
+      <div className="columns two plans">
         <Reveal className="plan">
-          <b>Free</b>
-          <p className="plan-kicker">One car</p>
-          <p className="price">Free<span> forever</span></p>
-          <Features
-            items={[
-              '1 vehicle on 1 device',
-              '250 MB evidence storage',
-              '5 document scans and 5 sealed inspections a month',
-              '30 days of comparison history',
-            ]}
-          />
-        </Reveal>
-
-        <Reveal delay={1} className="plan">
-          <b>Pro</b>
-          <p className="plan-kicker">Family plan</p>
-          <p className="price">{prices.pro}<span> / month</span></p>
-          <Features
-            items={[
-              '6 vehicles, shared on up to 6 devices',
-              '5 GB evidence storage',
-              '50 document scans every month',
-              'Unlimited sealed inspections and full comparisons',
-            ]}
-          />
-        </Reveal>
-
-        <Reveal delay={2} className="plan">
           <b>Enterprise</b>
           <p className="plan-kicker">Fleets and businesses</p>
           <p className="price" aria-live="polite">
@@ -104,16 +122,28 @@ export function Plans() {
               'The web app, for the office',
             ]}
           />
-          <a className="link-arrow" href={`/business/?fleet=${vehicles}#contact`}>
+          <a className="link-arrow" href={`/?fleet=${vehicles}#contact`}>
             {quote ? 'Request a quote' : 'Book a demo'}
           </a>
+        </Reveal>
+
+        <Reveal delay={1} className="plan">
+          <b>Large fleets and insurers</b>
+          <p className="plan-kicker">Over {SELF_SERVE_MAX} vehicles, or high volume</p>
+          <p className="price">Priced with you</p>
+          <Features
+            items={[
+              'Everything in Enterprise',
+              'Volume pricing',
+              'Help with setup',
+            ]}
+          />
+          <a className="link-arrow" href="/#contact">Talk to us</a>
         </Reveal>
       </div>
 
       <Reveal as="p" className="note">
-        Billed monthly through the App Store or Google Play. Cancel anytime.
-        {market === 'INTL' && ' Outside the US, the store shows the price in your own currency.'}
-        {' '}Over {SELF_SERVE_MAX} vehicles, we agree the price with you.
+        {storeNote} Just one car? <a href="/personal/">See personal plans</a>.
       </Reveal>
     </>
   );

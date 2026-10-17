@@ -7,7 +7,7 @@ export const tagline = 'Document. Protect. Prove.';
 export const businessMail = `mailto:${supportEmail}?subject=${encodeURIComponent('VehicleProof for business')}`;
 
 /** "Talk to us": the business enquiry form. */
-export const contactHref = '/business/#contact';
+export const contactHref = '/#contact';
 
 /** Where the enquiry form posts (backend WebsiteLeadController). VITE_LEADS_URL overrides it for testing. */
 export const leadsUrl: string = import.meta.env.VITE_LEADS_URL ?? 'https://api.vehicleproof.app/api/v1/public/leads';

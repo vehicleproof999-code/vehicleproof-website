@@ -1,25 +1,32 @@
 import type { Market } from './market';
-import { LOCAL } from './market';
 
-// Content shared by the home page and the business page.
+// Content shared by more than one page or component.
 
-/** One card per kind of business. [id] is the anchor on the business page. */
-export const businesses = (market: Market) => [
+/** One section per industry. [id] is its anchor on the home page. */
+export const industries = (market: Market) => [
   {
-    id: 'rental', who: 'Car rental', title: 'Every handover, settled.',
-    text: 'Check out and check in with guided photos. New damage sits side by side with the last rental, so a dispute ends with a photo, not an argument.',
+    id: 'rental', who: 'Car rental', title: '“That scratch was already there.” Not any more.',
+    points: ['Photos at pick-up and return', 'New damage shown side by side', 'A sealed report for the renter'],
   },
   {
-    id: 'dealers', who: 'Used car dealers', title: 'Sell with a history buyers trust.',
-    text: 'Inspect at trade-in, log the reconditioning work, and hand every buyer a sealed condition report.',
+    id: 'fleets', who: 'Company fleets and delivery', title: 'Every vehicle checked. Every renewal on time.',
+    points: [
+      'Your whole team inspects, on their phones',
+      market === 'MY' ? 'Road tax and insurance reminders' : 'Registration and insurance reminders',
+      'Costs tracked for each vehicle',
+    ],
   },
   {
-    id: 'fleets', who: 'Company fleets', title: 'Every vehicle, road-legal.',
-    text: `${LOCAL[market].renewalDates} for the whole fleet, with a reminder before anything lapses.`,
+    id: 'dealers', who: 'Used car dealers', title: "Show buyers exactly what they're getting.",
+    points: ['Condition recorded at trade-in', 'Service history in one place', 'A sealed report with every sale'],
   },
   {
-    id: 'delivery', who: 'Delivery and ride-hailing', title: 'Many drivers. One record.',
-    text: "Drivers inspect on their own phones. Managers see every vehicle's condition and running costs in one place.",
+    id: 'leasing', who: 'Leasing and car subscription', title: 'End-of-lease charges, without the argument.',
+    points: ['Photos at delivery and at return', 'Wear compared side by side', 'Proof behind every charge'],
+  },
+  {
+    id: 'insurance', who: 'Insurers and assessors', title: 'Photos you can trust.',
+    points: ['Customers inspect on their own phone', 'Every photo fingerprinted and timestamped', 'A sealed report, ready to review'],
   },
 ];
 
@@ -29,6 +36,8 @@ export const businessTypes = [
   { value: 'dealer', label: 'Used car dealer' },
   { value: 'fleet', label: 'Company fleet' },
   { value: 'delivery', label: 'Delivery or ride-hailing' },
+  { value: 'leasing', label: 'Leasing or car subscription' },
+  { value: 'insurance', label: 'Insurer or assessor' },
   { value: 'other', label: 'Something else' },
 ];
 

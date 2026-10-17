@@ -1,11 +1,11 @@
 import { contactHref, supportEmail } from '../site';
 
 const navLinks = [
-  { href: '/#inspections', label: 'Inspections' },
-  { href: '/business/', label: 'Business' },
+  { href: '/#industries', label: 'Industries' },
+  { href: '/#how', label: 'How it works' },
   { href: '/#web-app', label: 'Web app' },
-  { href: '/#plans', label: 'Plans' },
-  { href: '/privacy/', label: 'Privacy' },
+  { href: '/#plans', label: 'Pricing' },
+  { href: '/personal/', label: 'Personal' },
   { href: '/support/', label: 'Support' },
 ];
 
