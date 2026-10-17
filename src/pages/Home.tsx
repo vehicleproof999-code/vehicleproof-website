@@ -1,5 +1,6 @@
 import { Browser } from '../components/Browser';
 import { Iphone, type ScreenName } from '../components/Iphone';
+import { Plans } from '../components/Plans';
 import { Reveal } from '../components/Reveal';
 import { businessMail, supportEmail } from '../site';
 
@@ -48,14 +49,6 @@ const facts = [
   { big: '9 angles', text: 'Every side, corner and the odometer' },
   { big: 'SHA-256', text: 'A fingerprint for every photo' },
   { big: 'Timestamped', text: 'The moment each photo is taken' },
-];
-
-// Names and limits only: the App Store and Google Play show the price in
-// each customer's own currency.
-const plans = [
-  { name: 'Free', text: 'One vehicle, with inspections, records and reminders.' },
-  { name: 'Pro', text: 'Six vehicles, shared by the family on up to six phones.' },
-  { name: 'Enterprise', text: '20 to 40 vehicles in the app, more by quote. Unlimited devices, team roles and the web app.', quote: true },
 ];
 
 const privacy = [
@@ -183,15 +176,7 @@ export default function Home() {
         <div className="wrap">
           <Reveal as="h2" className="headline">A plan for every garage.</Reveal>
           <Reveal as="p" delay={1} className="lede">Start free. Grow when you need to.</Reveal>
-          <div className="columns three">
-            {plans.map((plan, i) => (
-              <Reveal key={plan.name} delay={delays[i]} className="plan">
-                <b>{plan.name}</b>
-                <span>{plan.text}</span>
-                {plan.quote && <a className="link-arrow" href={businessMail}>Request a quote</a>}
-              </Reveal>
-            ))}
-          </div>
+          <Plans />
         </div>
       </section>
 
