@@ -17,7 +17,7 @@ export const leadsUrl: string = import.meta.env.VITE_LEADS_URL ?? 'https://api.v
  * secrets. SANITY_PROJECT_ID and SANITY_DATASET override them at build time.
  * Without a project ID the blog shows that posts are on their way.
  */
-export const sanity = { projectId: '', dataset: 'production' };
+export const sanity = { projectId: 'g27fq7yx', dataset: 'production' };
 
 /** Joins class names, skipping empty ones. */
 export const cx = (...names: (string | false | null | undefined)[]) => names.filter(Boolean).join(' ');
