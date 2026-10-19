@@ -1,5 +1,4 @@
 import { Browser } from '../components/Browser';
-import { Calculator } from '../components/Calculator';
 import { Iphone, type ScreenName } from '../components/Iphone';
 import { LeadForm } from '../components/LeadForm';
 import { Plans } from '../components/Plans';
@@ -168,14 +167,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="soft" id="calculator">
-        <div className="wrap">
-          <Reveal as="h2" className="headline">One dispute settled.<br />Months paid for.</Reveal>
-          <Reveal as="p" delay={1} className="lede">Put in your numbers.</Reveal>
-          <Reveal><Calculator market={market} /></Reveal>
-        </div>
-      </section>
-
       <section id="local">
         <div className="wrap">
           <Reveal as="p" className="kicker red">{where.kicker}</Reveal>
@@ -190,8 +181,8 @@ export default function Home() {
 
       <section className="soft" id="plans">
         <div className="wrap">
-          <Reveal as="h2" className="headline">Priced per vehicle.</Reveal>
-          <Reveal as="p" delay={1} className="lede">Your whole team included.</Reveal>
+          <Reveal as="h2" className="headline">From one car<br />to a whole fleet.</Reveal>
+          <Reveal as="p" delay={1} className="lede">Free to start. Businesses pay per vehicle, with the whole team included.</Reveal>
           <Plans audience="business" />
         </div>
       </section>

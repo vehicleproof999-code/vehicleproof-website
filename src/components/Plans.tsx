@@ -30,7 +30,45 @@ const Features = ({ items }: { items: string[] }) => (
   </ul>
 );
 
-/** Personal: Free and Pro. Business: Enterprise with its slider, and larger fleets. */
+/** One car, free. */
+function FreePlan({ delay }: { delay?: 1 | 2 | 3 }) {
+  return (
+    <Reveal delay={delay} className="plan">
+      <b>Free</b>
+      <p className="plan-kicker">One car</p>
+      <p className="price">Free<span> forever</span></p>
+      <Features
+        items={[
+          '1 vehicle on 1 device',
+          '250 MB evidence storage',
+          '5 document scans and 5 sealed inspections a month',
+          '30 days of comparison history',
+        ]}
+      />
+    </Reveal>
+  );
+}
+
+/** A household's cars, shared. */
+function ProPlan({ price, delay }: { price: string; delay?: 1 | 2 | 3 }) {
+  return (
+    <Reveal delay={delay} className="plan">
+      <b>Pro</b>
+      <p className="plan-kicker">Family plan</p>
+      <p className="price">{price}<span> / month</span></p>
+      <Features
+        items={[
+          '6 vehicles, shared on up to 6 devices',
+          '5 GB evidence storage',
+          '50 document scans every month',
+          'Unlimited sealed inspections and full comparisons',
+        ]}
+      />
+    </Reveal>
+  );
+}
+
+/** Personal: Free and Pro. Business: every plan, from Free to large fleets. */
 export function Plans({ audience }: { audience: 'business' | 'personal' }) {
   // Pre-rendered pages show USD; Malaysia switches to ringgit once the page loads.
   const market = useMarket();
@@ -50,33 +88,8 @@ export function Plans({ audience }: { audience: 'business' | 'personal' }) {
     return (
       <>
         <div className="columns two plans">
-          <Reveal className="plan">
-            <b>Free</b>
-            <p className="plan-kicker">One car</p>
-            <p className="price">Free<span> forever</span></p>
-            <Features
-              items={[
-                '1 vehicle on 1 device',
-                '250 MB evidence storage',
-                '5 document scans and 5 sealed inspections a month',
-                '30 days of comparison history',
-              ]}
-            />
-          </Reveal>
-
-          <Reveal delay={1} className="plan">
-            <b>Pro</b>
-            <p className="plan-kicker">Family plan</p>
-            <p className="price">{prices.pro}<span> / month</span></p>
-            <Features
-              items={[
-                '6 vehicles, shared on up to 6 devices',
-                '5 GB evidence storage',
-                '50 document scans every month',
-                'Unlimited sealed inspections and full comparisons',
-              ]}
-            />
-          </Reveal>
+          <FreePlan />
+          <ProPlan price={prices.pro} delay={1} />
         </div>
         <Reveal as="p" className="note">
           {storeNote} Running a business? <a href="/#plans">See Enterprise</a>.
@@ -87,8 +100,10 @@ export function Plans({ audience }: { audience: 'business' | 'personal' }) {
 
   return (
     <>
-      <div className="columns two plans">
-        <Reveal className="plan">
+      <div className="columns four plans all-plans">
+        <FreePlan />
+        <ProPlan price={prices.pro} delay={1} />
+        <Reveal delay={2} className="plan">
           <b>Enterprise</b>
           <p className="plan-kicker">Fleets and businesses</p>
           <p className="price" aria-live="polite">
@@ -127,7 +142,7 @@ export function Plans({ audience }: { audience: 'business' | 'personal' }) {
           </a>
         </Reveal>
 
-        <Reveal delay={1} className="plan">
+        <Reveal delay={3} className="plan">
           <b>Large fleets and insurers</b>
           <p className="plan-kicker">Over {SELF_SERVE_MAX} vehicles, or high volume</p>
           <p className="price">Priced with you</p>
@@ -143,7 +158,7 @@ export function Plans({ audience }: { audience: 'business' | 'personal' }) {
       </div>
 
       <Reveal as="p" className="note">
-        {storeNote} Just one car? <a href="/personal/">See personal plans</a>.
+        {storeNote} Free and Pro are for personal and family cars: <a href="/personal/">see personal use</a>.
       </Reveal>
     </>
   );

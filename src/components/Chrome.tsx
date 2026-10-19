@@ -6,6 +6,7 @@ const navLinks = [
   { href: '/#web-app', label: 'Web app' },
   { href: '/#plans', label: 'Pricing' },
   { href: '/personal/', label: 'Personal' },
+  { href: '/blog/', label: 'Blog' },
   { href: '/support/', label: 'Support' },
 ];
 
@@ -15,7 +16,7 @@ export function Nav({ current }: { current: string }) {
     <header className="nav">
       <div className="wrap">
         <a className="brand" href="/" aria-label="VehicleProof home">
-          <img src="/assets/img/icon-96.png" alt="" width={24} height={24} />
+          <img src="/assets/img/icon-96.png" alt="" width={29} height={29} />
         </a>
         <nav className="nav-links" aria-label="Main">
           {navLinks.map((link) => (
@@ -37,6 +38,7 @@ export function Footer() {
       <div className="wrap">
         <span>© 2026 FoundryOps. Made in Malaysia, for fleets everywhere.</span>
         <nav aria-label="Footer">
+          <a href="/blog/">Blog</a>
           <a href="/privacy/">Privacy</a>
           <a href="/terms/">Terms</a>
           <a href="/support/">Support</a>

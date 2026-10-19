@@ -56,6 +56,9 @@ export const routes: Route[] = [
   },
 ];
 
+/** The blog's pages are made from its posts at build time (src/blog/schema.ts). */
+export const isBlogPath = (pathname: string) => pathname === '/blog' || pathname.startsWith('/blog/');
+
 /** The route for an address; unknown addresses get the not-found page. */
 export function findRoute(pathname: string): Route {
   const path = pathname.endsWith('/') || pathname === '/404' ? pathname : `${pathname}/`;

@@ -1,0 +1,29 @@
+{
+  "name": "vehicleproof-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "typecheck": "tsc --noEmit",
+    "deploy": "sanity deploy",
+    "login": "sanity login",
+    "export": "sanity dataset export production ../output/blog-backup.tar.gz"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "sanity": "^6.17.0",
+    "styled-components": "^6.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3"
+  }
+}

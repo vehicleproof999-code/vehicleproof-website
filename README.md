@@ -23,6 +23,7 @@ npm run preview    # serve dist/ to check the built site
 | Terms of Service | `src/pages/Terms.tsx` |
 | Delete your account | `src/pages/DeleteAccount.tsx` |
 | Support | `src/pages/Support.tsx` |
+| Blog (posts are written in Sanity, see [BLOG.md](BLOG.md)) | `src/pages/Blog.tsx` |
 | Page titles, descriptions and addresses | `src/routes.ts` |
 | Top bar and footer | `src/components/Chrome.tsx` |
 | Styles | `src/styles.css` |
@@ -35,7 +36,7 @@ npm run preview    # serve dist/ to check the built site
 ## Publishing
 
 Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site and
-publishes it to GitHub Pages. In the repo, **Settings → Pages → Source** must be
+publishes it to GitHub Pages. It also runs every hour, so new blog posts appear. In the repo, **Settings → Pages → Source** must be
 **GitHub Actions**.
 
 Fonts: Inter (SIL Open Font License, see `public/assets/fonts/Inter-LICENSE.txt`).

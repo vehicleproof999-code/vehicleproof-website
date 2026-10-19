@@ -1,7 +1,9 @@
 import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import App from './App';
+import type { BlogPageData } from './blog/schema';
 import './styles.css';
+import './blog.css';
 
 declare global {
   interface Window {
@@ -11,9 +13,12 @@ declare global {
 }
 
 const root = document.getElementById('root')!;
+// A blog page carries its posts, as built (src/entry-server.tsx).
+const blogData = document.getElementById('blog-data')?.textContent;
+const blog = blogData ? (JSON.parse(blogData) as BlogPageData) : undefined;
 const app = (
   <StrictMode>
-    <App pathname={location.pathname} />
+    <App pathname={location.pathname} blog={blog} />
   </StrictMode>
 );
 

@@ -1,10 +1,14 @@
 # Builds the site and publishes it to GitHub Pages (vehicleproof.app) on every
-# push to main. Repo setting needed once: Settings → Pages → Source: GitHub Actions.
+# push to main, and every hour so newly published blog posts appear (BLOG.md).
+# "Run workflow" on the Actions tab publishes a post straight away.
+# Repo setting needed once: Settings → Pages → Source: GitHub Actions.
 name: Deploy site
 
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: '7 * * * *'
   workflow_dispatch:
 
 permissions:
