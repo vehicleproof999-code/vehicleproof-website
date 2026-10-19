@@ -34,6 +34,8 @@ export const post = defineType({
           },
         }),
         defineArrayMember({ type: 'image', fields: imageFields }),
+        // Pasted tables turn into loose paragraphs; insert one of these instead.
+        defineArrayMember({ type: 'table', title: 'Table', description: 'The first row is shown as the heading row.' }),
       ],
     }),
   ],

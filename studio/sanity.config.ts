@@ -1,4 +1,5 @@
 import { defineConfig } from 'sanity';
+import { table } from '@sanity/table';
 import { structureTool } from 'sanity/structure';
 import { post } from './schemaTypes/post';
 
@@ -12,6 +13,6 @@ export default defineConfig({
   title: 'VehicleProof Blog',
   projectId,
   dataset: process.env.SANITY_STUDIO_DATASET || 'production',
-  plugins: [structureTool()],
+  plugins: [structureTool(), table()],
   schema: { types: [post] },
 });

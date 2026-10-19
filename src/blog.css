@@ -67,6 +67,13 @@
 .vp-blog-prose ul, .vp-blog-prose ol { margin: 0 0 24px; padding-left: 28px; }
 .vp-blog-prose li { margin: 8px 0; padding-left: 3px; }
 .vp-blog-prose code { padding: 2px 5px; border-radius: 4px; background: var(--soft); font: .85em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.vp-blog-table { margin: 28px 0 32px; overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+.vp-blog-table:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+.vp-blog-table table { width: 100%; min-width: 520px; border-collapse: collapse; font: 15px/1.5 var(--font-body); color: var(--ink); }
+.vp-blog-table th, .vp-blog-table td { padding: 12px 16px; text-align: left; vertical-align: top; border-top: 1px solid var(--line); border-bottom: 0; text-transform: none; letter-spacing: normal; font-size: 15px; color: var(--ink); }
+.vp-blog-table thead th { border-top: 0; background: var(--soft); font-weight: 600; font-size: 14px; }
+.vp-blog-table tbody th { font-weight: 600; width: 30%; }
+.vp-blog-table td { color: var(--soft-ink); }
 .vp-blog-article__actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 32px; padding: 10px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--muted); font: 12px var(--font-body); }
 .vp-blog-author-card { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 24px 0 30px; border-bottom: 1px solid var(--line); }
 .vp-blog-author-card .vp-blog-avatar { width: 54px; height: 54px; }

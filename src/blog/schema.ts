@@ -29,13 +29,20 @@ const textBlockSchema = z.object({
   markDefs: z.array(z.object({ _type: z.literal('link'), _key: z.string(), href: z.string() })).default([]),
   listItem: z.enum(['bullet', 'number']).optional(), level: z.number().int().min(1).optional(),
 });
+/** A table from the editor's Table block (@sanity/table): rows of text cells; the first row is the heading. */
+export const blogTableSchema = z.object({
+  _type: z.literal('table'), _key: z.string(),
+  rows: z.array(z.object({ _key: z.string(), cells: z.array(z.string().nullish().transform((value) => value ?? '')).default([]) })).default([]),
+});
+export type BlogTable = z.infer<typeof blogTableSchema>;
+
 export const blogSummarySchema = z.object({
   id: z.string(), slug: blogSlugSchema, title: z.string(), excerpt: z.string(),
   publishedAt: z.iso.datetime({ offset: true }), author: z.string(),
   category: z.enum(['insight', 'update']), coverImage: blogImageSchema.nullable(),
 });
 export const blogPostSchema = blogSummarySchema.extend({
-  body: z.array(z.union([textBlockSchema, blogImageSchema.extend({ _type: z.literal('image'), _key: z.string() })])),
+  body: z.array(z.union([textBlockSchema, blogImageSchema.extend({ _type: z.literal('image'), _key: z.string() }), blogTableSchema])),
 });
 export type BlogSummary = z.infer<typeof blogSummarySchema>;
 export type BlogPost = z.infer<typeof blogPostSchema>;
@@ -47,7 +54,8 @@ export function getBlogSections(post: BlogPost) {
 }
 
 export function getBlogReadingMinutes(post: BlogPost): number {
-  const text = post.body.filter((block) => block._type === 'block').flatMap((block) => block.children.map((span) => span.text)).join(' ');
+  const text = post.body.flatMap((block) => block._type === 'block' ? block.children.map((span) => span.text)
+    : block._type === 'table' ? block.rows.flatMap((row) => row.cells) : []).join(' ');
   return Math.max(1, Math.ceil(text.trim().split(/\s+/).filter(Boolean).length / 200));
 }
 

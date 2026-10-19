@@ -1,7 +1,7 @@
 import { PortableText, type PortableTextBlockComponent, type PortableTextComponents } from '@portabletext/react';
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import {
-  blogDescription, blogImageSchema, blogIndexPath, getBlogReadingMinutes, getBlogSections, safeBlogLink, sizedImage,
+  blogDescription, blogImageSchema, blogIndexPath, blogTableSchema, getBlogReadingMinutes, getBlogSections, safeBlogLink, sizedImage,
   type BlogPageData, type BlogPost, type BlogSummary,
 } from '../blog/schema';
 import { siteUrl } from '../site';
@@ -43,6 +43,22 @@ const bodyComponents: PortableTextComponents = {
       const image = blogImageSchema.safeParse(value);
       if (!image.success) return null;
       return <figure><img src={sizedImage(image.data.url, 1440)} alt={image.data.alt} loading="lazy" />{image.data.caption && <figcaption>{image.data.caption}</figcaption>}</figure>;
+    },
+    // The first row is the heading row; wide tables scroll sideways on phones.
+    table: ({ value }) => {
+      const table = blogTableSchema.safeParse(value);
+      if (!table.success || table.data.rows.length === 0) return null;
+      const [head, ...rows] = table.data.rows;
+      const columns = Math.max(...table.data.rows.map((row) => row.cells.length));
+      const cells = (row: { cells: string[] }) => Array.from({ length: columns }, (_, i) => row.cells[i] ?? '');
+      return (
+        <div className="vp-blog-table" role="region" aria-label="Table" tabIndex={0}>
+          <table>
+            {head && <thead><tr>{cells(head).map((cell, i) => <th key={i} scope="col">{cell}</th>)}</tr></thead>}
+            <tbody>{rows.map((row) => <tr key={row._key}>{cells(row).map((cell, i) => (i === 0 ? <th key={i} scope="row">{cell}</th> : <td key={i}>{cell}</td>))}</tr>)}</tbody>
+          </table>
+        </div>
+      );
     },
   },
   marks: {
