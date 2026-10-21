@@ -3,7 +3,7 @@ import { contactHref, supportEmail } from '../site';
 const navLinks = [
   { href: '/#industries', label: 'Industries' },
   { href: '/#how', label: 'How it works' },
-  { href: '/#web-app', label: 'Web app' },
+  { href: '/#screens', label: 'Screenshots' },
   { href: '/#plans', label: 'Pricing' },
   { href: '/personal/', label: 'Personal' },
   { href: '/blog/', label: 'Blog' },

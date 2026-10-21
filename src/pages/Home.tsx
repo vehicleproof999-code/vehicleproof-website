@@ -1,3 +1,4 @@
+import { AppScreens } from '../components/AppScreens';
 import { Browser } from '../components/Browser';
 import { Iphone, type ScreenName } from '../components/Iphone';
 import { LeadForm } from '../components/LeadForm';
@@ -181,19 +182,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="soft" id="web-app">
+      <section className="soft" id="screens">
         <div className="wrap">
-          <Reveal as="p" className="kicker red">Web app</Reveal>
-          <Reveal as="h2" delay={1} className="headline">Your whole fleet.<br />On one screen.</Reveal>
-          <Reveal className="web-main">
-            <Browser screen="dashboard" alt="The VehicleProof web app: the dashboard with vehicles, renewals and recent activity" />
+          <Reveal as="p" className="kicker red">Screenshots</Reveal>
+          <Reveal as="h2" delay={1} className="headline">See the apps.</Reveal>
+          <Reveal as="p" delay={2} className="lede">
+            Your team works on iPhone. The office sees the whole fleet in the web app.
           </Reveal>
+          <Reveal><AppScreens /></Reveal>
           <div className="columns four">
             {webFeatures.map((item, i) => (
               <Reveal key={item.title} delay={delays[i]}><b>{item.title}</b><span>{item.text}</span></Reveal>
             ))}
           </div>
-          <Reveal as="p" className="note">Included with Enterprise.</Reveal>
+          <Reveal as="p" className="note">The web app is included with Enterprise.</Reveal>
         </div>
       </section>
 

@@ -2,7 +2,9 @@
 // The frame is drawn in CSS, so it stays sharp at any size: --w on .iphone
 // sets the width and everything else scales from it.
 
-export type ScreenName = 'home' | 'camera' | 'summary' | 'compare' | 'service' | 'alerts';
+export type ScreenName =
+  | 'home' | 'vehicles' | 'passport' | 'inspections' | 'new-inspection' | 'checklist' | 'camera'
+  | 'summary' | 'report' | 'compare' | 'service' | 'insurance' | 'alerts';
 
 /** Screens whose top edge is black (the camera), so the status bar is white. */
 const darkTop: ScreenName[] = ['camera'];
@@ -10,8 +12,8 @@ const darkTop: ScreenName[] = ['camera'];
 type IphoneProps = {
   screen: ScreenName;
   alt: string;
-  /** Size class: the hero phone, a step in a row, or a phone inside a tile. */
-  size: 'hero' | 'step' | 'tile';
+  /** Size class: the hero phone, a step in a row, a phone inside a tile, or one in the screenshot gallery. */
+  size: 'hero' | 'step' | 'tile' | 'gallery';
   /** Load straight away (the first image on the page) instead of when near. */
   eager?: boolean;
 };
@@ -20,6 +22,7 @@ const sizes: Record<IphoneProps['size'], string> = {
   hero: '(max-width: 600px) 66vw, 280px',
   step: '(max-width: 760px) 60vw, 200px',
   tile: '(max-width: 760px) 60vw, 210px',
+  gallery: '(max-width: 760px) 62vw, 240px',
 };
 
 export function Iphone({ screen, alt, size, eager = false }: IphoneProps) {
