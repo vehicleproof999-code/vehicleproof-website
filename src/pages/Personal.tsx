@@ -14,7 +14,7 @@ const steps: { screen: ScreenName; title: string; text: string; alt: string }[] 
     alt: 'Inspection summary with issues marked around a car',
   },
   {
-    screen: 'compare', title: 'Spot what changed.', text: 'Slide between before and after. New damage stands out.',
+    screen: 'compare', title: 'Spot what changed.', text: 'Slide between before and after. AI flags new damage for you to check.',
     alt: 'A before photo and an after photo compared with a slider',
   },
 ];

@@ -13,19 +13,26 @@ const steps: { screen: ScreenName; title: string; text: string; alt: string }[] 
     alt: 'The guided camera photographing a corner of a car',
   },
   {
-    screen: 'compare', title: 'Managers check.', text: 'Check-out and check-in, side by side.',
+    screen: 'compare', title: 'AI spots what changed.', text: 'Check-out and check-in compared. New damage flagged.',
     alt: 'A check-out photo and a check-in photo compared with a slider',
   },
   {
-    screen: 'summary', title: 'Proof settles it.', text: 'A sealed report, shared as a PDF.',
+    screen: 'summary', title: 'Managers confirm.', text: 'Each finding checked, then sealed into a PDF report.',
     alt: 'An inspection summary with damage marked around a car',
   },
+];
+
+/** AI damage detection: what it compares, what it finds, and who decides. */
+const aiPoints = [
+  { title: 'Every angle compared', text: 'The same nine photos at check-out and check-in, checked one by one.' },
+  { title: 'Six kinds of damage', text: 'Dents, scratches, cracks, shattered glass, broken lamps and flat tyres.' },
+  { title: 'People decide', text: 'Each finding is confirmed or dismissed before it reaches a report.' },
 ];
 
 const webFeatures = [
   { title: 'Fleet dashboard', text: 'Every vehicle, renewal and cost.' },
   { title: 'Vehicle passport', text: "Each vehicle's whole history." },
-  { title: 'Big-screen compare', text: 'Angle by angle.' },
+  { title: 'AI damage compare', text: 'New damage flagged, angle by angle.' },
   { title: 'Live alerts', text: 'Before anything lapses.' },
 ];
 
@@ -59,7 +66,7 @@ const local = (market: Market) => market === 'MY'
 const faqs = (market: Market) => [
   {
     q: 'Does VehicleProof detect damage automatically?',
-    a: 'No. Your team pins damage on the photos, and check-out and check-in line up so new damage stands out.',
+    a: 'Yes, when you compare a check-out with a check-in. Computer vision checks each pair of photos and flags likely new dents, scratches, cracks, shattered glass, broken lamps and flat tyres. Your team confirms or dismisses each finding, so nothing reaches a report without a person checking it.',
   },
   {
     q: 'How is it billed?',
@@ -138,7 +145,25 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="soft" id="proof">
+      <section className="soft" id="ai">
+        <div className="wrap">
+          <Reveal as="p" className="kicker red">AI damage detection</Reveal>
+          <Reveal as="h2" delay={1} className="headline">New damage.<br />Flagged for you.</Reveal>
+          <Reveal as="p" delay={2} className="lede">
+            Computer vision compares check-out and check-in photos, angle by angle, and points out what looks new.
+          </Reveal>
+          <div className="columns three">
+            {aiPoints.map((item, i) => (
+              <Reveal key={item.title} delay={delays[i]}><b>{item.title}</b><span>{item.text}</span></Reveal>
+            ))}
+          </div>
+          <Reveal as="p" className="note">
+            AI can miss damage or flag a mark that isn't damage, so it guides your team's review rather than replacing it.
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="proof">
         <div className="wrap">
           <Reveal className="tile proof">
             <p className="tile-kicker">Proof that holds up</p>
@@ -151,7 +176,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="web-app">
+      <section className="soft" id="web-app">
         <div className="wrap">
           <Reveal as="p" className="kicker red">Web app</Reveal>
           <Reveal as="h2" delay={1} className="headline">Your whole fleet.<br />On one screen.</Reveal>

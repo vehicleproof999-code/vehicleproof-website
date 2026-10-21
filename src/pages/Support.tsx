@@ -17,7 +17,7 @@ export default function Support() {
     <p>Open a vehicle and tap <strong>New Inspection</strong>, choose the type (check-in, check-out, routine or pre-purchase), and follow the camera around the vehicle one angle at a time.</p>
 
     <h3>Can I compare two inspections?</h3>
-    <p>Yes. Once a vehicle has a finished check-in and check-out, open <strong>Compare Photos</strong> to see each angle side by side or with a slider.</p>
+    <p>Yes. Once a vehicle has a finished check-in and check-out, open <strong>Compare Photos</strong> to see each angle side by side or with a slider. AI flags damage that looks new; confirm or dismiss each finding before it goes into a report.</p>
 
     <h3>A scanned receipt has a wrong amount or date.</h3>
     <p>Scanning is automatic and can misread some receipts. Correct the fields before you save; you can also edit the record later.</p>
