@@ -274,6 +274,11 @@ th { font-weight: 600; font-size: 13px; color: var(--muted); text-transform: upp
 .faq details[open] summary::after { content: "−"; }
 .faq details p { margin: -6px 0 22px; color: var(--muted); font-size: 17px; line-height: 1.5; }
 
+/* AI damage detection: the training figure, large */
+.ai-stat { margin-top: 44px; }
+.ai-stat b { display: block; font-size: clamp(56px, 9vw, 104px); font-weight: 800; letter-spacing: -.05em; line-height: 1; color: var(--red); font-variant-numeric: tabular-nums; }
+.ai-stat span { display: block; margin-top: 10px; color: var(--muted); font-size: 17px; }
+
 /* Forms: the enquiry form */
 .lead-form { margin-top: 44px; text-align: left; }
 .lead-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 16px; }

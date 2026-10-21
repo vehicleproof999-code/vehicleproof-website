@@ -25,7 +25,7 @@ const steps: { screen: ScreenName; title: string; text: string; alt: string }[] 
 /** AI damage detection: what it compares, what it finds, and who decides. */
 const aiPoints = [
   { title: 'Every angle compared', text: 'The same nine photos at check-out and check-in, checked one by one.' },
-  { title: 'Six kinds of damage', text: 'Dents, scratches, cracks, shattered glass, broken lamps and flat tyres.' },
+  { title: 'Real-world damage', text: 'Learned from photos of dents, scratches and cracks on real cars.' },
   { title: 'People decide', text: 'Each finding is confirmed or dismissed before it reaches a report.' },
 ];
 
@@ -66,7 +66,7 @@ const local = (market: Market) => market === 'MY'
 const faqs = (market: Market) => [
   {
     q: 'Does VehicleProof detect damage automatically?',
-    a: 'Yes, when you compare a check-out with a check-in. Computer vision checks each pair of photos and flags likely new dents, scratches, cracks, shattered glass, broken lamps and flat tyres. Your team confirms or dismisses each finding, so nothing reaches a report without a person checking it.',
+    a: 'Yes, when you compare a check-out with a check-in. A computer vision model trained on over 15,000 photos of real car damage from public research datasets checks each pair of photos and flags likely new damage, such as dents, scratches and cracks. Your team confirms or dismisses each finding, so nothing reaches a report without a person checking it.',
   },
   {
     q: 'How is it billed?',
@@ -150,7 +150,12 @@ export default function Home() {
           <Reveal as="p" className="kicker red">AI damage detection</Reveal>
           <Reveal as="h2" delay={1} className="headline">New damage.<br />Flagged for you.</Reveal>
           <Reveal as="p" delay={2} className="lede">
-            Computer vision compares check-out and check-in photos, angle by angle, and points out what looks new.
+            A computer vision model compares check-out and check-in photos, angle by angle,
+            and points out what looks new.
+          </Reveal>
+          <Reveal className="ai-stat">
+            <b>15,000+</b>
+            <span>photos of real car damage from public research datasets, used to train the model</span>
           </Reveal>
           <div className="columns three">
             {aiPoints.map((item, i) => (
