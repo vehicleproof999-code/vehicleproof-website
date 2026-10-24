@@ -1,6 +1,6 @@
-# vehicleproof.app
+# vehicleprove.com
 
-The VehicleProof website: home, privacy policy, terms, account deletion and support.
+The VehicleProve website: home, privacy policy, terms, account deletion and support.
 React + TypeScript + Vite. Every page is pre-rendered to plain HTML at build time, so
 its text is readable without JavaScript (store reviewers, search engines, link
 previews); React then adds the scroll effects in the browser.

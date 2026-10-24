@@ -1,4 +1,4 @@
-# Builds the site and publishes it to GitHub Pages (vehicleproof.app) on every
+# Builds the site and publishes it to GitHub Pages (vehicleprove.com) on every
 # push to main, and every hour so newly published blog posts appear (BLOG.md).
 # "Run workflow" on the Actions tab publishes a post straight away.
 # Repo setting needed once: Settings → Pages → Source: GitHub Actions.

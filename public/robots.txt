@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vehicleproof.app/sitemap.xml
+Sitemap: https://vehicleprove.com/sitemap.xml

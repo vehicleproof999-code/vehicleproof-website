@@ -21,37 +21,37 @@ export type Route = {
 export const routes: Route[] = [
   {
     path: '/', page: Home, document: false,
-    title: 'VehicleProof: vehicle inspection software for rental, fleets, dealers, leasing and insurance',
+    title: 'VehicleProve: vehicle inspection software for rental, fleets, dealers, leasing and insurance',
     description: 'Guided photo inspections, sealed condition reports and renewal reminders for car rental companies, fleets, used car dealers, leasing companies and insurers. Staff inspect on their phones; managers see everything in the web app.',
   },
   {
     path: '/personal/', page: Personal, document: false,
-    title: 'VehicleProof for your car: inspections, service history and reminders',
+    title: 'VehicleProve for your car: inspections, service history and reminders',
     description: 'Photo inspections, service history, documents and renewal reminders for your own car. Free for one car; Pro covers the whole family.',
   },
   {
     path: '/privacy/', page: Privacy, document: true,
-    title: 'Privacy Policy · VehicleProof',
-    description: 'How VehicleProof collects, uses, stores and protects your personal data.',
+    title: 'Privacy Policy · VehicleProve',
+    description: 'How VehicleProve collects, uses, stores and protects your personal data.',
   },
   {
     path: '/terms/', page: Terms, document: true,
-    title: 'Terms of Service · VehicleProof',
-    description: 'The terms for using the VehicleProof app and website.',
+    title: 'Terms of Service · VehicleProve',
+    description: 'The terms for using the VehicleProve app and website.',
   },
   {
     path: '/delete-account/', page: DeleteAccount, document: true,
-    title: 'Delete your account · VehicleProof',
-    description: 'How to delete your VehicleProof account and data, in the app or by email.',
+    title: 'Delete your account · VehicleProve',
+    description: 'How to delete your VehicleProve account and data, in the app or by email.',
   },
   {
     path: '/support/', page: Support, document: true,
-    title: 'Support · VehicleProof',
-    description: 'Get help with VehicleProof.',
+    title: 'Support · VehicleProve',
+    description: 'Get help with VehicleProve.',
   },
   {
     path: '/404', page: NotFound, document: true, noindex: true,
-    title: 'Page not found · VehicleProof',
+    title: 'Page not found · VehicleProve',
     description: "That page doesn't exist.",
   },
 ];

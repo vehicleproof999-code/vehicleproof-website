@@ -1,5 +1,5 @@
 // A web app screen in a plain browser window. The screens are screenshots of
-// the real web app (portal.vehicleproof.app) with sample vehicles.
+// the real web app (portal.vehicleprove.com) with sample vehicles.
 
 export type WebScreen = 'dashboard' | 'vehicles' | 'passport' | 'report' | 'compare' | 'service' | 'alerts';
 
@@ -18,7 +18,7 @@ export function Browser({ screen, alt, small = false, sizes }: BrowserProps) {
     <div className={small ? 'browser small' : 'browser'}>
       <div className="bar" aria-hidden="true">
         <i /><i /><i />
-        {!small && <span>portal.vehicleproof.app</span>}
+        {!small && <span>portal.vehicleprove.com</span>}
       </div>
       <img
         src={`${base}-1586.webp`}

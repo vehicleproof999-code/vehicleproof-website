@@ -10,7 +10,7 @@ if (!projectId || !/^[a-z0-9]+$/.test(projectId)) {
 
 export default defineConfig({
   name: 'vehicleproof',
-  title: 'VehicleProof Blog',
+  title: 'VehicleProve Blog',
   projectId,
   dataset: process.env.SANITY_STUDIO_DATASET || 'production',
   plugins: [structureTool(), table()],

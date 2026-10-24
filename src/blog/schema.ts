@@ -75,7 +75,7 @@ export const sizedImage = (url: string, width: number) => `${url}?w=${width}&aut
 // Published posts only: no drafts or versions, and none dated in the future.
 const imageProjection = '{"url": asset->url, "alt": coalesce(alt, ""), caption}';
 const summaryProjection = `"id": _id, "slug": slug.current, title, excerpt, publishedAt,
-  "author": coalesce(author, "VehicleProof"), "category": coalesce(category, "insight"),
+  "author": coalesce(author, "VehicleProve"), "category": coalesce(category, "insight"),
   "coverImage": select(defined(coverImage.asset) => coverImage${imageProjection}, null)`;
 const publishedFilter = `_type == "post" && !(_id in path("drafts.**")) && !(_id in path("versions.**"))
   && defined(slug.current) && defined(publishedAt) && dateTime(publishedAt) <= dateTime(now())`;
@@ -102,7 +102,7 @@ export type BlogPage = {
 const summaryOf = ({ body: _body, ...summary }: BlogPost): BlogSummary => summary;
 
 export const blogIndexPath = (page: number) => (page === 1 ? '/blog/' : `/blog/page/${page}/`);
-export const blogDescription = 'News, guides and updates from the VehicleProof team.';
+export const blogDescription = 'News, guides and updates from the VehicleProve team.';
 
 /**
  * Every blog page for these posts (as Sanity returned them): the list, in
@@ -130,7 +130,7 @@ export function buildBlogPages(raw: unknown): { pages: BlogPage[]; skipped: stri
   for (let page = 1; page <= total; page++) {
     pages.push({
       path: blogIndexPath(page),
-      title: page === 1 ? 'Blog · VehicleProof' : `Blog, page ${page} · VehicleProof`,
+      title: page === 1 ? 'Blog · VehicleProve' : `Blog, page ${page} · VehicleProve`,
       description: blogDescription,
       ogType: 'website',
       data: { kind: 'index', page, pages: total, posts: posts.slice((page - 1) * BLOG_PAGE_SIZE, page * BLOG_PAGE_SIZE).map(summaryOf) },
@@ -139,7 +139,7 @@ export function buildBlogPages(raw: unknown): { pages: BlogPage[]; skipped: stri
   for (const post of posts) {
     pages.push({
       path: `/blog/${post.slug}/`,
-      title: `${post.title} · VehicleProof`,
+      title: `${post.title} · VehicleProve`,
       description: post.excerpt,
       ogType: 'article',
       ogImage: post.coverImage ? sizedImage(post.coverImage.url, 1200) : undefined,

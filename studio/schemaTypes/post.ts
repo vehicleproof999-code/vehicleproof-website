@@ -18,7 +18,7 @@ export const post = defineType({
     }),
     defineField({ name: 'excerpt', title: 'Short introduction', type: 'text', rows: 3, description: 'Shown on the Blog page and in sharing previews.', validation: rule => rule.required().min(10).max(300) }),
     defineField({ name: 'category', title: 'Post type', type: 'string', initialValue: 'insight', options: { list: [{ title: 'Guide / Insight', value: 'insight' }, { title: 'Product update', value: 'update' }], layout: 'radio' }, validation: rule => rule.required() }),
-    defineField({ name: 'author', title: 'Author', type: 'string', initialValue: 'VehicleProof', validation: rule => rule.required() }),
+    defineField({ name: 'author', title: 'Author', type: 'string', initialValue: 'VehicleProve', validation: rule => rule.required() }),
     defineField({ name: 'publishedAt', title: 'Publication date', type: 'datetime', initialValue: () => new Date().toISOString(), description: 'Set to today when you publish. Future-dated posts stay hidden until that date; this field does not publish drafts automatically.', validation: rule => rule.required() }),
     defineField({ name: 'coverImage', title: 'Cover image', type: 'image', fields: imageFields }),
     defineField({

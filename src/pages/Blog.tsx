@@ -225,7 +225,7 @@ function RelatedPosts({ posts }: { posts: BlogSummary[] }) {
   if (!posts.length) return null;
   return (
     <section className="vp-blog-related" aria-labelledby="related-heading">
-      <div className="vp-journal-section-head"><h2 id="related-heading">More from VehicleProof</h2><a href="/blog/">View all posts <Icon name="arrow-right" size={13} /></a></div>
+      <div className="vp-journal-section-head"><h2 id="related-heading">More from VehicleProve</h2><a href="/blog/">View all posts <Icon name="arrow-right" size={13} /></a></div>
       <div className="vp-blog-related__grid">{posts.map((post) => (
         <article key={post.id}>
           <a href={`/blog/${post.slug}/`}>

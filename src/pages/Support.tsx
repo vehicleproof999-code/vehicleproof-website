@@ -7,7 +7,7 @@ export default function Support() {
 
     <div className="contact-card">
       <p style={{ margin: '0 0 6px', color: 'var(--muted)' }}>Email</p>
-      <p className="mail" style={{ margin: '0' }}><a href="mailto:vehicleproof999@gmail.com?subject=VehicleProof%20support">vehicleproof999@gmail.com</a></p>
+      <p className="mail" style={{ margin: '0' }}><a href="mailto:support@vehicleprove.com?subject=VehicleProve%20support">support@vehicleprove.com</a></p>
     </div>
     <p>To help us help you faster, include your phone model, and what you tapped just before the problem. A screenshot helps too. Please don't send passwords.</p>
 

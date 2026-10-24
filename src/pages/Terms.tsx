@@ -6,16 +6,16 @@ export default function Terms() {
     <p className="updated">Effective 27 September 2026</p>
 
     <div className="summary">
-      <p><strong>In short:</strong> VehicleProof helps you record and organise your vehicles' condition, history and documents. Your content stays yours. Reminders and scanned text are there to help, but you're still responsible for your renewals and for checking details. Paid plans are billed and cancelled through the App Store or Google Play.</p>
+      <p><strong>In short:</strong> VehicleProve helps you record and organise your vehicles' condition, history and documents. Your content stays yours. Reminders and scanned text are there to help, but you're still responsible for your renewals and for checking details. Paid plans are billed and cancelled through the App Store or Google Play.</p>
     </div>
 
     <h2>1. Agreement</h2>
-    <p>These terms are an agreement between you and <strong>FoundryOps</strong>, a business of <strong>Mohamad Akmal bin Mohamed Abu Bakar</strong> in Malaysia ("we", "us"), for the VehicleProof app and website (the "Service"). By creating an account or using the Service, you agree to these terms and to our <a href="/privacy/">Privacy Policy</a>. If you use the Service for a company, you confirm you may accept these terms for it.</p>
+    <p>These terms are an agreement between you and <strong>FoundryOps</strong>, a business of <strong>Mohamad Akmal bin Mohamed Abu Bakar</strong> in Malaysia ("we", "us"), for the VehicleProve app and website (the "Service"). By creating an account or using the Service, you agree to these terms and to our <a href="/privacy/">Privacy Policy</a>. If you use the Service for a company, you confirm you may accept these terms for it.</p>
 
     <h2>2. Your account</h2>
     <ul>
       <li>Give accurate account details and keep your sign-in secure. You're responsible for what happens in your account.</li>
-      <li>Tell us promptly at <a href="mailto:vehicleproof999@gmail.com">vehicleproof999@gmail.com</a> if you think someone else has access to it.</li>
+      <li>Tell us promptly at <a href="mailto:support@vehicleprove.com">support@vehicleprove.com</a> if you think someone else has access to it.</li>
       <li>Your plan may limit how many devices can use your account at once.</li>
       <li>You must be old enough to form a binding contract where you live, or have a parent or guardian's permission.</li>
     </ul>
@@ -73,7 +73,7 @@ export default function Terms() {
 
     <h2>13. Contact</h2>
     <p>FoundryOps (Mohamad Akmal bin Mohamed Abu Bakar), Malaysia<br />
-    <a href="mailto:vehicleproof999@gmail.com">vehicleproof999@gmail.com</a></p>
+    <a href="mailto:support@vehicleprove.com">support@vehicleprove.com</a></p>
     </>
   );
 }

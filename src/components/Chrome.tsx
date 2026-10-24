@@ -15,7 +15,7 @@ export function Nav({ current }: { current: string }) {
   return (
     <header className="nav">
       <div className="wrap">
-        <a className="brand" href="/" aria-label="VehicleProof home">
+        <a className="brand" href="/" aria-label="VehicleProve home">
           <img src="/assets/img/icon-96.png" alt="" width={29} height={29} />
         </a>
         <nav className="nav-links" aria-label="Main">

@@ -6,12 +6,12 @@ export default function Privacy() {
     <p className="updated">Effective 18 October 2026</p>
 
     <div className="summary">
-      <p><strong>In short:</strong> we use your data to run VehicleProof for you, nothing else. We don't sell it, we don't show ads, and the app has no advertising or analytics trackers. Your records are stored in Singapore. You can see, correct, export or delete your data at any time, and deleting your account in the app removes it.</p>
+      <p><strong>In short:</strong> we use your data to run VehicleProve for you, nothing else. We don't sell it, we don't show ads, and the app has no advertising or analytics trackers. Your records are stored in Singapore. You can see, correct, export or delete your data at any time, and deleting your account in the app removes it.</p>
     </div>
 
     <h2>1. Who we are</h2>
-    <p>VehicleProof (the app and this website) is operated by <strong>FoundryOps</strong>, a business of <strong>Mohamad Akmal bin Mohamed Abu Bakar</strong>, in Malaysia ("we", "us"). We are responsible for your personal data under Malaysia's Personal Data Protection Act 2010 (PDPA).</p>
-    <p>Contact for anything in this policy: <a href="mailto:vehicleproof999@gmail.com">vehicleproof999@gmail.com</a>.</p>
+    <p>VehicleProve (the app and this website) is operated by <strong>FoundryOps</strong>, a business of <strong>Mohamad Akmal bin Mohamed Abu Bakar</strong>, in Malaysia ("we", "us"). We are responsible for your personal data under Malaysia's Personal Data Protection Act 2010 (PDPA).</p>
+    <p>Contact for anything in this policy: <a href="mailto:support@vehicleprove.com">support@vehicleprove.com</a>.</p>
 
     <h2>2. What we collect</h2>
     <div className="table-wrap">
@@ -49,7 +49,7 @@ export default function Privacy() {
     <p>We don't sell your data, use it for advertising, or use your photos and documents to train AI models.</p>
 
     <h2>4. Who we share it with</h2>
-    <p>We use a small number of service providers to run VehicleProof. They process data only on our instructions and only for the purpose listed.</p>
+    <p>We use a small number of service providers to run VehicleProve. They process data only on our instructions and only for the purpose listed.</p>
     <div className="table-wrap">
       <table>
         <thead><tr><th>Provider</th><th>What for</th><th>Location</th></tr></thead>
@@ -67,7 +67,7 @@ export default function Privacy() {
         </tbody>
       </table>
     </div>
-    <p><strong>Google Drive:</strong> if you connect your own Google Drive, the app can only see files it creates there. Files you store in your Drive are yours; they stay in your Drive under Google's terms, even if you later delete your VehicleProof account.</p>
+    <p><strong>Google Drive:</strong> if you connect your own Google Drive, the app can only see files it creates there. Files you store in your Drive are yours; they stay in your Drive under Google's terms, even if you later delete your VehicleProve account.</p>
     <p><strong>Sharing you choose:</strong> when you share an inspection report or invite someone to your workspace, they see what you share.</p>
     <p><strong>Legal requests:</strong> we disclose data if the law requires it, or to protect the rights and safety of users and others.</p>
 
@@ -108,10 +108,10 @@ export default function Privacy() {
       <li><strong>Delete</strong> your account and data. See <a href="/delete-account/">how to delete your account</a>.</li>
       <li><strong>Receive your data</strong> in a portable form.</li>
     </ul>
-    <p>Email <a href="mailto:vehicleproof999@gmail.com">vehicleproof999@gmail.com</a> from the address on your account. We'll reply within 21 days, as the PDPA requires. If you're not satisfied with our answer, you can complain to the Personal Data Protection Commissioner of Malaysia (<a href="https://www.pdp.gov.my" rel="noopener">pdp.gov.my</a>).</p>
+    <p>Email <a href="mailto:support@vehicleprove.com">support@vehicleprove.com</a> from the address on your account. We'll reply within 21 days, as the PDPA requires. If you're not satisfied with our answer, you can complain to the Personal Data Protection Commissioner of Malaysia (<a href="https://www.pdp.gov.my" rel="noopener">pdp.gov.my</a>).</p>
 
     <h2>9. Children</h2>
-    <p>VehicleProof is meant for adults who own, rent out or manage vehicles. It isn't directed at children, and we don't knowingly collect data from anyone under 13. If you think a child has given us data, contact us and we'll delete it.</p>
+    <p>VehicleProve is meant for adults who own, rent out or manage vehicles. It isn't directed at children, and we don't knowingly collect data from anyone under 13. If you think a child has given us data, contact us and we'll delete it.</p>
 
     <h2>10. This website</h2>
     <p>This website uses no cookies, analytics or trackers. It is hosted on GitHub Pages, which may record visitors' IP addresses for security, as described in GitHub's privacy statement.</p>
@@ -121,7 +121,7 @@ export default function Privacy() {
 
     <h2>12. Contact</h2>
     <p>FoundryOps (Mohamad Akmal bin Mohamed Abu Bakar), Malaysia<br />
-    <a href="mailto:vehicleproof999@gmail.com">vehicleproof999@gmail.com</a></p>
+    <a href="mailto:support@vehicleprove.com">support@vehicleprove.com</a></p>
     </>
   );
 }

@@ -66,7 +66,7 @@ const local = (market: Market) => market === 'MY'
 
 const faqs = (market: Market) => [
   {
-    q: 'Does VehicleProof detect damage automatically?',
+    q: 'Does VehicleProve detect damage automatically?',
     a: 'Yes, when you compare a check-out with a check-in. A computer vision model trained on over 15,000 photos of real car damage from public research datasets checks each pair of photos and flags likely new damage, such as dents, scratches and cracks. Your team confirms or dismisses each finding, so nothing reaches a report without a person checking it.',
   },
   {

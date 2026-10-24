@@ -2,22 +2,22 @@
 export default function DeleteAccount() {
   return (
     <>
-    <h1>Delete your VehicleProof account</h1>
+    <h1>Delete your VehicleProve account</h1>
     <p className="updated">You can delete your account and data at any time, in the app or by email.</p>
 
     <h2>In the app</h2>
     <ol className="steps">
-      <li>Open VehicleProof and tap the <strong>profile icon</strong> at the top right of the home screen.</li>
+      <li>Open VehicleProve and tap the <strong>profile icon</strong> at the top right of the home screen.</li>
       <li>Tap the <strong>⋯ menu</strong> at the top right, then <strong>Delete Account</strong>.</li>
       <li>Type <strong>DELETE</strong> to confirm, then tap <strong>Delete my account</strong>.</li>
     </ol>
     <p>You're signed out straight away.</p>
 
     <h2>Without the app</h2>
-    <p>Email us from the address you use for VehicleProof, so we can confirm the account is yours:</p>
+    <p>Email us from the address you use for VehicleProve, so we can confirm the account is yours:</p>
     <div className="contact-card">
-      <p className="mail" style={{ margin: '0 0 6px' }}><a href="mailto:vehicleproof999@gmail.com?subject=Delete%20my%20VehicleProof%20account">vehicleproof999@gmail.com</a></p>
-      <p style={{ margin: '0', color: 'var(--muted)' }}>Subject: <strong>Delete my VehicleProof account</strong></p>
+      <p className="mail" style={{ margin: '0 0 6px' }}><a href="mailto:support@vehicleprove.com?subject=Delete%20my%20VehicleProve%20account">support@vehicleprove.com</a></p>
+      <p style={{ margin: '0', color: 'var(--muted)' }}>Subject: <strong>Delete my VehicleProve account</strong></p>
     </div>
     <p>We'll confirm by email and delete the account within 7 days of confirming it's yours. If you can't send from that address, tell us and we'll find another way to verify you.</p>
 
@@ -41,8 +41,8 @@ export default function DeleteAccount() {
     <h2>Subscriptions</h2>
     <p>Deleting your account doesn't cancel a Pro subscription bought in the App Store or Google Play. Cancel it in your store account so you aren't charged again:</p>
     <ul>
-      <li><strong>iPhone:</strong> Settings → your name → Subscriptions → VehicleProof → Cancel Subscription</li>
-      <li><strong>Android:</strong> Google Play → profile picture → Payments &amp; subscriptions → Subscriptions → VehicleProof → Cancel</li>
+      <li><strong>iPhone:</strong> Settings → your name → Subscriptions → VehicleProve → Cancel Subscription</li>
+      <li><strong>Android:</strong> Google Play → profile picture → Payments &amp; subscriptions → Subscriptions → VehicleProve → Cancel</li>
     </ul>
 
     <p>Want to remove only some data? You can delete individual vehicles, records and documents in the app, or email us.</p>

@@ -33,7 +33,7 @@ export default function Personal() {
     <>
       <section className="hero">
         <div className="wrap">
-          <Reveal as="p" className="kicker">VehicleProof for your car</Reveal>
+          <Reveal as="p" className="kicker">VehicleProve for your car</Reveal>
           <Reveal as="h1" delay={1} className="display">Proof, for your car.</Reveal>
           <Reveal as="p" delay={2} className="lede">Inspections, service history and reminders. Free for one car.</Reveal>
           <Reveal delay={3} className="links-row">
@@ -41,7 +41,7 @@ export default function Personal() {
             <a className="link-arrow" href="#plans">Plans</a>
           </Reveal>
           <Reveal delay={3} className="hero-phone">
-            <Iphone screen="home" size="hero" eager alt="The VehicleProof home screen, with the garage and records" />
+            <Iphone screen="home" size="hero" eager alt="The VehicleProve home screen, with the garage and records" />
           </Reveal>
         </div>
       </section>
@@ -110,7 +110,7 @@ export default function Personal() {
           <Reveal delay={3} className="closing-actions">
             <div className="links-row">
               <a className="link-arrow" href="/support/">Support</a>
-              <a className="link-arrow" href={`mailto:${supportEmail}?subject=VehicleProof`}>Email us</a>
+              <a className="link-arrow" href={`mailto:${supportEmail}?subject=VehicleProve`}>Email us</a>
             </div>
           </Reveal>
         </div>

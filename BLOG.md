@@ -21,7 +21,7 @@ keeps its current posts; the next hourly build tries again.
 ## 1. Create the Sanity project (once)
 
 1. Sign up at https://www.sanity.io/ and open https://www.sanity.io/manage.
-2. Create a project named **VehicleProof** on the **Free** plan.
+2. Create a project named **VehicleProve** on the **Free** plan.
 3. Create a **public** dataset named `production`. Published posts are public
    on the website anyway; drafts stay private.
 4. Copy the **project ID** from the project settings. It is public, not a
