@@ -23,8 +23,9 @@ export type Route = {
 export const routes: Route[] = [
   {
     path: '/', page: Home, source: 'src/pages/Home.tsx', document: false,
-    title: 'VehicleProve: vehicle inspection software for rental, fleets, dealers, leasing and insurance',
-    description: 'Guided photo inspections, sealed condition reports and renewal reminders for car rental companies, fleets, used car dealers, leasing companies and insurers. Staff inspect on their phones; managers see everything in the web app.',
+    // Under 60 characters, so search results show it whole; the audiences are in the description.
+    title: 'VehicleProve: Vehicle Inspection & Fleet Maintenance App',
+    description: 'For car rental companies, used car dealers, fleets, leasing companies and insurers: guided photo inspections, AI damage checks, sealed reports and renewal reminders.',
   },
   {
     path: '/personal/', page: Personal, source: 'src/pages/Personal.tsx', document: false,
