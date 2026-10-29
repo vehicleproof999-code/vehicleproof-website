@@ -44,7 +44,12 @@ a:hover { text-decoration: underline; }
   border-bottom: 1px solid var(--hair);
 }
 .nav .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.brand { display: flex; align-items: center; gap: 9px; flex: none; }
+.brand:hover { text-decoration: none; }
 .brand img { width: 29px; height: 29px; border-radius: 7px; }
+/* The name as in the app: "Vehicle" in ink, "Prove" in red. */
+.wordmark { color: var(--ink); font-size: 18px; font-weight: 800; letter-spacing: -.4px; white-space: nowrap; }
+.wordmark span { color: var(--red); }
 .nav-links { display: flex; gap: 36px; font-size: 14.5px; }
 .nav-links a { color: var(--ink); opacity: .8; }
 .nav-links a:hover, .nav-links a[aria-current="page"] { opacity: 1; text-decoration: none; }

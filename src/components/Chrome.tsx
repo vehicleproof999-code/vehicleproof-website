@@ -17,6 +17,7 @@ export function Nav({ current }: { current: string }) {
       <div className="wrap">
         <a className="brand" href="/" aria-label="VehicleProve home">
           <img src="/assets/img/icon-96.png" alt="" width={29} height={29} />
+          <span className="wordmark" aria-hidden="true">Vehicle<span>Prove</span></span>
         </a>
         <nav className="nav-links" aria-label="Main">
           {navLinks.map((link) => (
