@@ -68,6 +68,9 @@ a:hover { text-decoration: underline; }
 /* ---------- Type ---------- */
 .kicker { font-size: 19px; font-weight: 600; color: var(--muted); margin: 0 0 6px; }
 .kicker.red { color: var(--red); }
+/* The home heading: what it is (small, red), then the slogan (large). */
+.hero-title { margin: 0; font-size: inherit; font-weight: inherit; }
+.hero-title .kicker, .hero-title .display { display: block; }
 .display { font-size: clamp(48px, 8vw, 96px); font-weight: 800; letter-spacing: -.045em; line-height: 1.02; margin: 4px 0 18px; }
 .headline { font-size: clamp(36px, 5.5vw, 64px); font-weight: 800; letter-spacing: -.04em; line-height: 1.05; margin: 0 0 16px; }
 .lede { font-size: clamp(19px, 2.2vw, 24px); line-height: 1.35; color: var(--muted); max-width: 660px; margin: 0 auto; }

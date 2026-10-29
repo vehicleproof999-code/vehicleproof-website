@@ -1,6 +1,7 @@
 // Writes every page as real HTML into dist/, so the text is there without
 // JavaScript (store reviewers, search engines, link previews). React then
 // attaches to it in the browser for the scroll effects.
+import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -50,9 +51,24 @@ const { pages: blogPages, skipped } = buildBlogPages(await publishedPosts());
 for (const title of skipped) console.warn(`  (blog: left out "${title}": it is missing a required field)`);
 for (const page of blogPages) write(page.path, renderBlog(page));
 
+// When a page last changed: its file's last commit, and for the pages built
+// from shared parts (home, personal) those parts' too. Needs the full history
+// (fetch-depth: 0 in the deploy workflow); without git the date is left out.
+const shared = ['src/components', 'src/content.ts', 'src/market.ts'];
+function lastChanged(route) {
+  const files = route.document ? [route.source] : [route.source, ...shared];
+  try {
+    return execFileSync('git', ['log', '-1', '--format=%cs', '--', ...files], { cwd: root, encoding: 'utf8' }).trim() || undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 // Every indexed page, for search engines (robots.txt points here).
-const urls = [...routes.filter((route) => !route.noindex), ...blogPages]
-  .map((page) => `  <url><loc>${siteUrl}${page.path}</loc></url>`);
+const urls = [
+  ...routes.filter((route) => !route.noindex).map((route) => ({ path: route.path, modified: lastChanged(route) })),
+  ...blogPages.map((page) => ({ path: page.path, modified: page.modifiedTime?.slice(0, 10) })),
+].map(({ path, modified }) => `  <url><loc>${siteUrl}${path}</loc>${modified ? `<lastmod>${modified}</lastmod>` : ''}</url>`);
 writeFileSync(join(dist, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`);
 console.log(`  sitemap.xml        ${urls.length} pages`);

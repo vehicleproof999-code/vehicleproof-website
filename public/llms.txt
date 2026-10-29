@@ -1,0 +1,39 @@
+# VehicleProve
+
+> VehicleProve is a vehicle inspection app for car rental companies, used car dealers, company fleets, leasing companies, workshops and insurers. Staff take guided photo inspections on their phones; managers see every vehicle in a web app. It is made in Malaysia by FoundryOps and works in any country.
+
+## What it does
+
+- Guided photo inspections: the same angles every time (every side, each corner and the odometer), each photo timestamped and fingerprinted with SHA-256.
+- Check-out and check-in compared angle by angle, with an AI model flagging likely new damage (dents, scratches, cracks and more). A person confirms or dismisses each finding before it reaches a report.
+- Sealed condition reports as PDF or CSV, to share with customers and insurers.
+- Customer sign-off at handover: the customer signs on the phone or through a signing link, and the signature goes into the report.
+- Renewal reminders for service dates, insurance and road tax, plus service history, documents and costs for each vehicle.
+- A web app for the office: fleet dashboard, damage and spend charts, alerts, and each vehicle's full history.
+
+## Who it is for
+
+- Car rental: settle "that scratch was already there" disputes with photo evidence from check-out and check-in.
+- Used car dealers: show buyers the vehicle's exact condition.
+- Company fleets and delivery: every vehicle checked and every renewal on time.
+- Leasing and car subscription: end-of-lease charges backed by photos.
+- Insurers and assessors: photos that can be trusted.
+- Individuals: inspections, service history and reminders for their own cars.
+
+## Prices (monthly)
+
+- Free: one vehicle on one device.
+- Pro (family plan): RM39 in Malaysia, US$14.99 elsewhere; 6 vehicles on up to 6 devices.
+- Enterprise: per vehicle, from RM150 (US$50) for 20 vehicles up to RM300 (US$99.90) for 40, with the whole team included. Above 40 vehicles, priced by quote.
+
+Subscriptions are billed through the App Store or Google Play. Data is stored in Singapore and never sold.
+
+## Links
+
+- [Home](https://vehicleprove.com/): features, industries, prices and FAQ
+- [For your own car](https://vehicleprove.com/personal/)
+- [Blog](https://vehicleprove.com/blog/)
+- [Support](https://vehicleprove.com/support/)
+- [Privacy Policy](https://vehicleprove.com/privacy/)
+- [Terms of Service](https://vehicleprove.com/terms/)
+- Contact: support@vehicleprove.com

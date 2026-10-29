@@ -4,8 +4,8 @@ import { Iphone, type ScreenName } from '../components/Iphone';
 import { LeadForm } from '../components/LeadForm';
 import { Plans } from '../components/Plans';
 import { Reveal } from '../components/Reveal';
-import { industries } from '../content';
-import { LOCAL, SELF_SERVE_MAX, useMarket, type Market } from '../market';
+import { faqs, industries } from '../content';
+import { LOCAL, useMarket, type Market } from '../market';
 import { cx } from '../site';
 
 const steps: { screen: ScreenName; title: string; text: string; alt: string }[] = [
@@ -64,29 +64,6 @@ const local = (market: Market) => market === 'MY'
     ],
   };
 
-const faqs = (market: Market) => [
-  {
-    q: 'Does VehicleProve detect damage automatically?',
-    a: 'Yes, when you compare a check-out with a check-in. A computer vision model trained on over 15,000 photos of real car damage from public research datasets checks each pair of photos and flags likely new damage, such as dents, scratches and cracks. Your team confirms or dismisses each finding, so nothing reaches a report without a person checking it.',
-  },
-  {
-    q: 'How is it billed?',
-    a: `Monthly through the App Store or Google Play, ${market === 'MY' ? 'in ringgit' : 'in your currency'}, up to ${SELF_SERVE_MAX} vehicles. Above that, we agree a price.`,
-  },
-  {
-    q: 'Does each staff member need a subscription?',
-    a: 'No. Enterprise covers your whole team, on unlimited devices.',
-  },
-  {
-    q: 'Can we share reports with customers and insurers?',
-    a: 'Yes, as a sealed PDF or CSV.',
-  },
-  {
-    q: 'When can we start?',
-    a: 'We launch on iPhone and Android soon. Get in touch now to be set up first.',
-  },
-];
-
 const delays = [undefined, 1, 2, 3] as const;
 
 export default function Home() {
@@ -97,8 +74,10 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="wrap">
-          <Reveal as="p" className="kicker red">Vehicle inspection software</Reveal>
-          <Reveal as="h1" delay={1} className="display">Proof, for every vehicle.</Reveal>
+          <Reveal as="h1" className="hero-title">
+            <span className="kicker red">Vehicle inspection app for car rental, dealers and fleets</span>
+            <span className="display">Proof, for every vehicle.</span>
+          </Reveal>
           <Reveal as="p" delay={2} className="lede">Guided photo inspections that settle damage disputes.</Reveal>
           <Reveal delay={3} className="links-row hero-actions">
             <a className="pill" href="#contact">Book a demo</a>

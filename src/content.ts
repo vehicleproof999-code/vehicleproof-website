@@ -1,4 +1,4 @@
-import type { Market } from './market';
+import { SELF_SERVE_MAX, type Market } from './market';
 
 // Content shared by more than one page or component.
 
@@ -59,4 +59,28 @@ export const countries = [
   'India', 'United Arab Emirates', 'Saudi Arabia', 'United Kingdom', 'Ireland', 'Germany', 'France', 'Netherlands',
   'Spain', 'Italy', 'United States', 'Canada', 'Mexico', 'Brazil', 'South Africa', 'Nigeria', 'Kenya', 'Japan',
   'South Korea', 'Hong Kong', 'Taiwan',
+];
+
+/** The home page's questions, also given to search engines as FAQ data (src/seo.ts). */
+export const faqs = (market: Market) => [
+  {
+    q: 'Does VehicleProve detect damage automatically?',
+    a: 'Yes, when you compare a check-out with a check-in. A computer vision model trained on over 15,000 photos of real car damage from public research datasets checks each pair of photos and flags likely new damage, such as dents, scratches and cracks. Your team confirms or dismisses each finding, so nothing reaches a report without a person checking it.',
+  },
+  {
+    q: 'How is it billed?',
+    a: `Monthly through the App Store or Google Play, ${market === 'MY' ? 'in ringgit' : 'in your currency'}, up to ${SELF_SERVE_MAX} vehicles. Above that, we agree a price.`,
+  },
+  {
+    q: 'Does each staff member need a subscription?',
+    a: 'No. Enterprise covers your whole team, on unlimited devices.',
+  },
+  {
+    q: 'Can we share reports with customers and insurers?',
+    a: 'Yes, as a sealed PDF or CSV.',
+  },
+  {
+    q: 'When can we start?',
+    a: 'We launch on iPhone and Android soon. Get in touch now to be set up first.',
+  },
 ];

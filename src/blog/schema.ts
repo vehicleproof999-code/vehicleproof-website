@@ -38,7 +38,7 @@ export type BlogTable = z.infer<typeof blogTableSchema>;
 
 export const blogSummarySchema = z.object({
   id: z.string(), slug: blogSlugSchema, title: z.string(), excerpt: z.string(),
-  publishedAt: z.iso.datetime({ offset: true }), author: z.string(),
+  publishedAt: z.iso.datetime({ offset: true }), updatedAt: z.iso.datetime({ offset: true }).optional(), author: z.string(),
   category: z.enum(['insight', 'update']), coverImage: blogImageSchema.nullable(),
 });
 export const blogPostSchema = blogSummarySchema.extend({
@@ -74,7 +74,7 @@ export const sizedImage = (url: string, width: number) => `${url}?w=${width}&aut
 
 // Published posts only: no drafts or versions, and none dated in the future.
 const imageProjection = '{"url": asset->url, "alt": coalesce(alt, ""), caption}';
-const summaryProjection = `"id": _id, "slug": slug.current, title, excerpt, publishedAt,
+const summaryProjection = `"id": _id, "slug": slug.current, title, excerpt, publishedAt, "updatedAt": _updatedAt,
   "author": coalesce(author, "VehicleProve"), "category": coalesce(category, "insight"),
   "coverImage": select(defined(coverImage.asset) => coverImage${imageProjection}, null)`;
 const publishedFilter = `_type == "post" && !(_id in path("drafts.**")) && !(_id in path("versions.**"))
@@ -97,6 +97,8 @@ export type BlogPage = {
   ogType: 'website' | 'article';
   ogImage?: string;
   publishedTime?: string;
+  /** For the sitemap: when the page last changed. */
+  modifiedTime?: string;
 };
 
 const summaryOf = ({ body: _body, ...summary }: BlogPost): BlogSummary => summary;
@@ -133,6 +135,7 @@ export function buildBlogPages(raw: unknown): { pages: BlogPage[]; skipped: stri
       title: page === 1 ? 'Blog · VehicleProve' : `Blog, page ${page} · VehicleProve`,
       description: blogDescription,
       ogType: 'website',
+      modifiedTime: posts[0]?.updatedAt ?? posts[0]?.publishedAt,
       data: { kind: 'index', page, pages: total, posts: posts.slice((page - 1) * BLOG_PAGE_SIZE, page * BLOG_PAGE_SIZE).map(summaryOf) },
     });
   }
@@ -144,6 +147,7 @@ export function buildBlogPages(raw: unknown): { pages: BlogPage[]; skipped: stri
       ogType: 'article',
       ogImage: post.coverImage ? sizedImage(post.coverImage.url, 1200) : undefined,
       publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt ?? post.publishedAt,
       data: { kind: 'article', post, related: posts.filter((other) => other.slug !== post.slug).slice(0, 3).map(summaryOf) },
     });
   }

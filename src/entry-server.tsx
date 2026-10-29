@@ -3,6 +3,7 @@ import { renderToString } from 'react-dom/server';
 import App from './App';
 import { allPostsQuery, buildBlogPages, type BlogPage } from './blog/schema';
 import { routes, type Route } from './routes';
+import { structuredData } from './seo';
 import { sanity, siteUrl } from './site';
 
 export { allPostsQuery, buildBlogPages, routes, sanity, siteUrl };
@@ -12,8 +13,9 @@ const escape = (text: string) =>
 
 type Meta = Pick<Route, 'path' | 'title' | 'description' | 'noindex'> & Partial<Pick<BlogPage, 'ogType' | 'ogImage' | 'publishedTime'>>;
 
-function head(page: Meta) {
+function head(page: Meta, data?: BlogPage['data']) {
   const url = siteUrl + (page.path === '/404' ? '/' : page.path);
+  const image = escape(page.ogImage ?? `${siteUrl}/assets/img/og.png`);
   const tags = [
     `<title>${escape(page.title)}</title>`,
     `<meta name="description" content="${escape(page.description)}">`,
@@ -21,9 +23,17 @@ function head(page: Meta) {
     `<meta property="og:type" content="${page.ogType ?? 'website'}">`,
     `<meta property="og:title" content="${escape(page.title)}">`,
     `<meta property="og:description" content="${escape(page.description)}">`,
-    `<meta property="og:image" content="${escape(page.ogImage ?? `${siteUrl}/assets/img/og.png`)}">`,
+    `<meta property="og:image" content="${image}">`,
     `<meta property="og:url" content="${url}">`,
+    '<meta property="og:site_name" content="VehicleProve">',
     ...(page.publishedTime ? [`<meta property="article:published_time" content="${escape(page.publishedTime)}">`] : []),
+    '<meta name="twitter:card" content="summary_large_image">',
+    `<meta name="twitter:title" content="${escape(page.title)}">`,
+    `<meta name="twitter:description" content="${escape(page.description)}">`,
+    `<meta name="twitter:image" content="${image}">`,
+    ...(page.noindex ? [] : [
+      `<script type="application/ld+json">${structuredData({ path: page.path, post: data?.kind === 'article' ? data.post : undefined })}</script>`,
+    ]),
   ];
   return tags.join('\n  ');
 }
@@ -35,7 +45,7 @@ function head(page: Meta) {
 export function renderBlog(page: BlogPage) {
   const json = JSON.stringify(page.data).replace(/</g, '\\u003c');
   return {
-    head: `${head(page)}\n  <script type="application/json" id="blog-data">${json}</script>`,
+    head: `${head(page, page.data)}\n  <script type="application/json" id="blog-data">${json}</script>`,
     html: renderToString(
       <StrictMode>
         <App pathname={page.path} blog={page.data} />

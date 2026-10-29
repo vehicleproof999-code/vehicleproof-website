@@ -25,6 +25,9 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
+        with:
+          # The whole history, so the sitemap can date each page's last change.
+          fetch-depth: 0
       - uses: actions/setup-node@v7
         with:
           node-version: 24
