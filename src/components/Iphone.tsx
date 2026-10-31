@@ -20,7 +20,7 @@ type IphoneProps = {
 
 const sizes: Record<IphoneProps['size'], string> = {
   hero: '(max-width: 600px) 66vw, 280px',
-  step: '(max-width: 760px) 60vw, 200px',
+  step: '(max-width: 760px) 40vw, 230px',
   tile: '(max-width: 760px) 60vw, 210px',
   gallery: '(max-width: 760px) 62vw, 240px',
 };

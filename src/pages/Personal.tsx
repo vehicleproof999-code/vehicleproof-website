@@ -48,7 +48,7 @@ export default function Personal() {
 
       <section className="soft" id="inspections">
         <div className="wrap">
-          <Reveal as="h2" className="headline">Walk around. Tap.<br />Proven.</Reveal>
+          <Reveal as="h2" className="headline">Walk around. Tap. <br />Proven.</Reveal>
           <div className="steps-row">
             {steps.map((step, i) => (
               <Reveal key={step.screen} delay={delays[i]}>
@@ -67,13 +67,13 @@ export default function Personal() {
           <div className="tiles">
             <Reveal className="tile">
               <p className="tile-kicker">Service history</p>
-              <h3>Scan the receipt.<br />Done.</h3>
+              <h3>Scan the receipt. <br />Done.</h3>
               <p>The app fills in the rest.</p>
               <Iphone screen="service" size="tile" alt="A car's service history in the app" />
             </Reveal>
             <Reveal delay={1} className="tile">
               <p className="tile-kicker">Reminders</p>
-              <h3>Never miss<br />a renewal.</h3>
+              <h3>Never miss <br />a renewal.</h3>
               <p>{LOCAL[market].renewals}, before they're due.</p>
               <Iphone screen="alerts" size="tile" alt="Renewal and service alerts in the app" />
             </Reveal>
@@ -91,7 +91,7 @@ export default function Personal() {
 
       <section id="privacy">
         <div className="wrap">
-          <Reveal as="h2" className="headline">Your records.<br />Your control.</Reveal>
+          <Reveal as="h2" className="headline">Your records. <br />Your control.</Reveal>
           <Reveal as="p" delay={1} className="lede">No ads. No trackers. We never sell your data.</Reveal>
           <div className="columns three">
             {privacy.map((item, i) => (

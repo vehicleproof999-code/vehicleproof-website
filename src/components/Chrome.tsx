@@ -1,4 +1,5 @@
-import { contactHref, supportEmail } from '../site';
+import { useEffect, useRef, type MouseEvent } from 'react';
+import { contactHref, prefersStill, supportEmail } from '../site';
 
 const navLinks = [
   { href: '/#industries', label: 'Industries' },
@@ -10,7 +11,80 @@ const navLinks = [
   { href: '/support/', label: 'Support' },
 ];
 
-/** The thin top bar: the icon, centred links and one button. [current] marks the page you're on. */
+/** How long the menu takes to slide away (.nav-menu.closing in styles.css). */
+const CLOSE_MS = 160;
+
+/**
+ * The menu on phones and tablets. A <details>, so it opens without the script
+ * too; the script adds the closing animation, and closes it after a choice, on
+ * a tap elsewhere and on Escape.
+ */
+function NavMenu({ current }: { current: string }) {
+  const menu = useRef<HTMLDetailsElement>(null);
+
+  const close = () => {
+    const el = menu.current;
+    if (!el?.open || el.classList.contains('closing')) return;
+    if (prefersStill()) {
+      el.open = false;
+      return;
+    }
+    el.classList.add('closing');
+    setTimeout(() => {
+      el.open = false;
+      el.classList.remove('closing');
+    }, CLOSE_MS);
+  };
+
+  useEffect(() => {
+    const onPointer = (event: PointerEvent) => {
+      if (!menu.current?.contains(event.target as Node)) close();
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape' || !menu.current?.open) return;
+      close();
+      menu.current.querySelector('summary')?.focus();
+    };
+    document.addEventListener('pointerdown', onPointer);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('pointerdown', onPointer);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, []);
+
+  const onSummary = (event: MouseEvent) => {
+    if (!menu.current?.open) return;
+    event.preventDefault();
+    close();
+  };
+
+  return (
+    <details className="nav-menu" ref={menu}>
+      <summary aria-label="Menu" onClick={onSummary}>
+        <span className="burger" aria-hidden="true"><i /><i /><i /></span>
+      </summary>
+      <nav className="nav-sheet" aria-label="Main">
+        {navLinks.map((link, index) => (
+          <a
+            key={link.href}
+            href={link.href}
+            onClick={close}
+            aria-current={link.href === current ? 'page' : undefined}
+            style={{ animationDelay: `${index * 25}ms` }}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a className="pill" href={contactHref} onClick={close} style={{ animationDelay: `${navLinks.length * 25}ms` }}>
+          Talk to us
+        </a>
+      </nav>
+    </details>
+  );
+}
+
+/** The thin top bar: the icon, centred links and one button; a menu on smaller screens. [current] marks the page you're on. */
 export function Nav({ current }: { current: string }) {
   return (
     <header className="nav">
@@ -26,7 +100,10 @@ export function Nav({ current }: { current: string }) {
             </a>
           ))}
         </nav>
-        <a className="pill pill-small" href={contactHref}>Talk to us</a>
+        <div className="nav-end">
+          <a className="pill pill-small" href={contactHref}>Talk to us</a>
+          <NavMenu current={current} />
+        </div>
       </div>
     </header>
   );

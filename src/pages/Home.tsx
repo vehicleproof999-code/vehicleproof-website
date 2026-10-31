@@ -72,7 +72,7 @@ export default function Home() {
   const list = industries(market);
   return (
     <>
-      <section className="hero">
+      <section className="hero hero-home">
         <div className="wrap">
           <Reveal as="h1" className="hero-title">
             <span className="kicker red">Vehicle inspection app for car rental, dealers and fleets</span>
@@ -86,15 +86,18 @@ export default function Home() {
           <Reveal delay={3} as="nav" className="chips" aria-label="Industries">
             {list.map((item) => <a key={item.id} href={`#${item.id}`}>{item.who}</a>)}
           </Reveal>
-          <Reveal className="web-main">
+          <Reveal className="web-main hero-visual-web">
             <Browser screen="compare" alt="Comparing check-out and check-in photos of a car, angle by angle, in the web app" />
+          </Reveal>
+          <Reveal className="hero-visual-phone">
+            <Iphone screen="compare" size="hero" alt="A check-in photo and a check-out photo of a car compared with a slider in the app" />
           </Reveal>
         </div>
       </section>
 
       <section className="soft" id="industries">
         <div className="wrap">
-          <Reveal as="h2" className="headline">Made for every business<br />that hands over keys.</Reveal>
+          <Reveal as="h2" className="headline">Made for every business <br />that hands over keys.</Reveal>
           <div className="cards">
             {list.map((item, i) => (
               <Reveal key={item.id} id={item.id} delay={delays[i % 2]}
@@ -112,7 +115,7 @@ export default function Home() {
 
       <section id="how">
         <div className="wrap">
-          <Reveal as="h2" className="headline">Your team inspects.<br />The office sees it all.</Reveal>
+          <Reveal as="h2" className="headline">Your team inspects. <br />The office sees it all.</Reveal>
           <div className="steps-row">
             {steps.map((step, i) => (
               <Reveal key={step.screen} delay={delays[i]}>
@@ -128,7 +131,7 @@ export default function Home() {
       <section className="soft" id="ai">
         <div className="wrap">
           <Reveal as="p" className="kicker red">AI damage detection</Reveal>
-          <Reveal as="h2" delay={1} className="headline">New damage.<br />Flagged for you.</Reveal>
+          <Reveal as="h2" delay={1} className="headline">New damage. <br />Flagged for you.</Reveal>
           <Reveal as="p" delay={2} className="lede">
             A computer vision model compares check-out and check-in photos, angle by angle,
             and points out what looks new.
@@ -192,7 +195,7 @@ export default function Home() {
 
       <section className="soft" id="plans">
         <div className="wrap">
-          <Reveal as="h2" className="headline">From one car<br />to a whole fleet.</Reveal>
+          <Reveal as="h2" className="headline">From one car <br />to a whole fleet.</Reveal>
           <Reveal as="p" delay={1} className="lede">Free to start. Businesses pay per vehicle, with the whole team included.</Reveal>
           <Plans audience="business" />
         </div>
@@ -214,7 +217,7 @@ export default function Home() {
 
       <section className="soft" id="contact">
         <div className="narrow">
-          <Reveal as="h2" className="headline">Let's set up<br />your fleet.</Reveal>
+          <Reveal as="h2" className="headline">Let's set up <br />your fleet.</Reveal>
           <Reveal as="p" delay={1} className="lede">We reply within one business day.</Reveal>
           <LeadForm market={market} />
           <p className="note">Just your own car? <a href="/personal/">It's free</a>.</p>
