@@ -43,17 +43,21 @@ a:hover { text-decoration: underline; }
   -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--hair);
 }
-.nav .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.nav .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; width: min(100% - 44px, 1080px); }
 .brand { display: flex; align-items: center; gap: 9px; flex: none; }
 .brand:hover { text-decoration: none; }
 .brand img { width: 29px; height: 29px; border-radius: 7px; }
 /* The name as in the app: "Vehicle" in ink, "Prove" in red. */
 .wordmark { color: var(--ink); font-size: 18px; font-weight: 800; letter-spacing: -.4px; white-space: nowrap; }
 .wordmark span { color: var(--red); }
-.nav-links { display: flex; gap: 36px; font-size: 14.5px; }
+.nav-links { display: flex; gap: 36px; font-size: 14.5px; white-space: nowrap; }
 .nav-links a { color: var(--ink); opacity: .8; }
 .nav-links a:hover, .nav-links a[aria-current="page"] { opacity: 1; text-decoration: none; }
 .nav-end { display: flex; align-items: center; gap: 10px; flex: none; }
+.nav-signin { padding: 6px 8px; color: var(--ink); font-size: 14.5px; opacity: .8; }
+.nav-signin:hover { opacity: 1; text-decoration: none; }
+.hero-note { margin: 14px 0 0; color: var(--muted); font-size: 15px; text-align: center; }
+.plan-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
 
 /* The menu on phones and tablets: three lines that turn into a cross, and a sheet under the bar. */
 .nav-menu { display: none; }
@@ -403,9 +407,10 @@ th { font-weight: 600; font-size: 13px; color: var(--muted); text-transform: upp
 .chips a { transition: background-color .2s, transform .15s var(--ease); }
 .pill:active, .chips a:active { transform: scale(.97); }
 
-/* The seven links no longer fit beside the name and button. */
-@media (max-width: 960px) {
+/* The seven links no longer fit beside the name, Sign in and the trial button. */
+@media (max-width: 1120px) {
   .nav-links { display: none; }
+  .nav-signin { display: none; }
   .nav-menu { display: block; }
   .pill-small { min-height: 38px; padding: 0 14px; }
 }

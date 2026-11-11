@@ -69,7 +69,7 @@ export const faqs = (market: Market) => [
   },
   {
     q: 'How is it billed?',
-    a: `Monthly through the App Store or Google Play, ${market === 'MY' ? 'in ringgit' : 'in your currency'}, up to ${SELF_SERVE_MAX} vehicles. Above that, we agree a price.`,
+    a: `After a free 14-day trial, monthly through the App Store or Google Play, ${market === 'MY' ? 'in ringgit' : 'in your currency'}, up to ${SELF_SERVE_MAX} vehicles. Above that, we agree a price.`,
   },
   {
     q: 'Does each staff member need a subscription?',
@@ -81,6 +81,6 @@ export const faqs = (market: Market) => [
   },
   {
     q: 'When can we start?',
-    a: 'We launch on iPhone and Android soon. Get in touch now to be set up first.',
+    a: 'Today. Start a free 14-day Enterprise trial, no card needed, and set up your vehicles in the web app. Prefer a walkthrough first? Book a demo.',
   },
 ];

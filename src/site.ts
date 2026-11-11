@@ -6,6 +6,18 @@ export const tagline = 'Document. Protect. Prove.';
 /** An email to the team, marked as a business enquiry: the fallback when the form can't send. */
 export const businessMail = `mailto:${supportEmail}?subject=${encodeURIComponent('VehicleProve for business')}`;
 
+/** The web app, where businesses sign up and sign in. */
+export const portalUrl = 'https://portal.vehicleprove.com';
+
+/** Sign in to the web app. */
+export const signInHref = `${portalUrl}/sign-in`;
+
+/**
+ * "Start free trial": create an account in the web app, then a free 14-day
+ * Enterprise trial. The fleet size chosen on the page goes along (?fleet=30).
+ */
+export const trialHref = (vehicles?: number) => `${portalUrl}/start${vehicles ? `?fleet=${vehicles}` : ''}`;
+
 /** "Talk to us": the business enquiry form. */
 export const contactHref = '/#contact';
 

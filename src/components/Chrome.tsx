@@ -1,5 +1,5 @@
 import { useEffect, useRef, type MouseEvent } from 'react';
-import { contactHref, prefersStill, supportEmail } from '../site';
+import { contactHref, prefersStill, signInHref, supportEmail, trialHref } from '../site';
 
 const navLinks = [
   { href: '/#industries', label: 'Industries' },
@@ -76,8 +76,10 @@ function NavMenu({ current }: { current: string }) {
             {link.label}
           </a>
         ))}
-        <a className="pill" href={contactHref} onClick={close} style={{ animationDelay: `${navLinks.length * 25}ms` }}>
-          Talk to us
+        <a href={contactHref} onClick={close} style={{ animationDelay: `${navLinks.length * 25}ms` }}>Talk to us</a>
+        <a href={signInHref} style={{ animationDelay: `${(navLinks.length + 1) * 25}ms` }}>Sign in</a>
+        <a className="pill" href={trialHref()} style={{ animationDelay: `${(navLinks.length + 2) * 25}ms` }}>
+          Start free trial
         </a>
       </nav>
     </details>
@@ -101,7 +103,8 @@ export function Nav({ current }: { current: string }) {
           ))}
         </nav>
         <div className="nav-end">
-          <a className="pill pill-small" href={contactHref}>Talk to us</a>
+          <a className="nav-signin" href={signInHref}>Sign in</a>
+          <a className="pill pill-small" href={trialHref()}>Start free trial</a>
           <NavMenu current={current} />
         </div>
       </div>

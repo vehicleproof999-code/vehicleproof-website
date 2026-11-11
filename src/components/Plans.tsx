@@ -1,5 +1,6 @@
 import { useState, type CSSProperties } from 'react';
 import { PRICES, SELF_SERVE_MAX, useMarket } from '../market';
+import { trialHref } from '../site';
 import { Reveal } from './Reveal';
 
 // Up to 40 vehicles Enterprise is a store subscription in steps of 5, as in the app.
@@ -137,9 +138,14 @@ export function Plans({ audience }: { audience: 'business' | 'personal' }) {
               'The web app, for the office',
             ]}
           />
-          <a className="link-arrow" href={`/?fleet=${vehicles}#contact`}>
-            {quote ? 'Request a quote' : 'Book a demo'}
-          </a>
+          {quote ? (
+            <a className="link-arrow" href={`/?fleet=${vehicles}#contact`}>Request a quote</a>
+          ) : (
+            <div className="plan-actions">
+              <a className="pill pill-small" href={trialHref(vehicles)}>Start 14-day free trial</a>
+              <a className="link-arrow" href={`/?fleet=${vehicles}#contact`}>Book a demo</a>
+            </div>
+          )}
         </Reveal>
 
         <Reveal delay={3} className="plan">

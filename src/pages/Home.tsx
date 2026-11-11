@@ -6,7 +6,7 @@ import { Plans } from '../components/Plans';
 import { Reveal } from '../components/Reveal';
 import { faqs, industries } from '../content';
 import { LOCAL, useMarket, type Market } from '../market';
-import { cx } from '../site';
+import { cx, trialHref } from '../site';
 
 const steps: { screen: ScreenName; title: string; text: string; alt: string }[] = [
   {
@@ -80,9 +80,10 @@ export default function Home() {
           </Reveal>
           <Reveal as="p" delay={2} className="lede">Guided photo inspections that settle damage disputes.</Reveal>
           <Reveal delay={3} className="links-row hero-actions">
-            <a className="pill" href="#contact">Book a demo</a>
-            <a className="link-arrow" href="#how">See how it works</a>
+            <a className="pill" href={trialHref()}>Start free trial</a>
+            <a className="link-arrow" href="#contact">Book a demo</a>
           </Reveal>
+          <Reveal delay={3} as="p" className="hero-note">14 days of Enterprise, free. No card needed.</Reveal>
           <Reveal delay={3} as="nav" className="chips" aria-label="Industries">
             {list.map((item) => <a key={item.id} href={`#${item.id}`}>{item.who}</a>)}
           </Reveal>
