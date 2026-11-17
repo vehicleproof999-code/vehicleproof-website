@@ -3,12 +3,13 @@ import { industryMenu } from '../content';
 import { contactHref, prefersStill, signInHref, supportEmail, trialHref } from '../site';
 import { IndustryIcon } from './IndustryIcons';
 
-// Few links, so the bar reads at a glance; Blog and Support are in the footer.
+// Few links, so the bar reads at a glance; Support is in the footer.
 // Industries opens a list of them (IndustriesMenu) between How it works and Pricing.
 const navLinks = [
   { href: '/#how', label: 'How it works' },
   { href: '/#plans', label: 'Pricing' },
   { href: '/personal/', label: 'Personal' },
+  { href: '/blog/', label: 'Blog' },
 ];
 
 const Chevron = () => (
