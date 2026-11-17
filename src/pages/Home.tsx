@@ -1,27 +1,37 @@
-import { AppScreens } from '../components/AppScreens';
 import { Browser } from '../components/Browser';
 import { Iphone, type ScreenName } from '../components/Iphone';
 import { LeadForm } from '../components/LeadForm';
 import { Plans } from '../components/Plans';
 import { Reveal } from '../components/Reveal';
+import { StaffQrScreen } from '../components/SignScreens';
 import { faqs, industries } from '../content';
 import { LOCAL, useMarket, type Market } from '../market';
 import { cx, trialHref } from '../site';
 
-const steps: { screen: ScreenName; title: string; text: string; alt: string }[] = [
+/** The steps, in order. A step with [drawn] shows that screen instead of a screenshot. */
+const steps: { screen: ScreenName; title: string; text: string; alt: string; drawn?: boolean }[] = [
   {
-    screen: 'camera', title: 'Your staff inspect.', text: 'Guided, one angle at a time.',
-    alt: 'The guided camera photographing a corner of a car',
+    screen: 'camera', title: 'Take the photos',
+    text: 'Staff follow the guided camera: nine timestamped photos, from every side to the odometer.',
+    alt: 'The guided camera photographing the front-right corner of a car',
   },
   {
-    screen: 'compare', title: 'AI spots what changed.', text: 'Check-out and check-in compared. New damage flagged.',
+    screen: 'compare', title: 'Spot new damage',
+    text: 'Check-out and check-in photos are compared angle by angle, and new scratches and dents are flagged.',
     alt: 'A check-out photo and a check-in photo compared with a slider',
   },
   {
-    screen: 'summary', title: 'Managers confirm.', text: 'Each finding checked, then sealed into a PDF report.',
+    screen: 'summary', title: 'Seal the report',
+    text: 'A manager confirms each finding, and the inspection is sealed into a PDF report you can share.',
     alt: 'An inspection summary with damage marked around a car',
   },
+  {
+    screen: 'summary', title: 'Customer signs', drawn: true,
+    text: 'At handover, the customer scans a QR code, checks the photos and damage, and signs on their own phone.',
+    alt: 'The staff phone showing a QR code for the customer to scan and sign',
+  },
 ];
+
 
 /** AI damage detection: what it compares, what it finds, and who decides. */
 const aiPoints = [
@@ -30,12 +40,6 @@ const aiPoints = [
   { title: 'People decide', text: 'Each finding is confirmed or dismissed before it reaches a report.' },
 ];
 
-const webFeatures = [
-  { title: 'Fleet dashboard', text: 'Every vehicle, renewal and cost.' },
-  { title: 'Vehicle passport', text: "Each vehicle's whole history." },
-  { title: 'AI damage compare', text: 'New damage flagged, angle by angle.' },
-  { title: 'Live alerts', text: 'Before anything lapses.' },
-];
 
 const facts = [
   { big: '9 angles', text: 'Every side, corner and the odometer' },
@@ -84,9 +88,6 @@ export default function Home() {
             <a className="link-arrow" href="#contact">Book a demo</a>
           </Reveal>
           <Reveal delay={3} as="p" className="hero-note">14 days of Enterprise, free. No card needed.</Reveal>
-          <Reveal delay={3} as="nav" className="chips" aria-label="Industries">
-            {list.map((item) => <a key={item.id} href={`#${item.id}`}>{item.who}</a>)}
-          </Reveal>
           <Reveal className="web-main hero-visual-web">
             <Browser screen="compare" alt="Comparing check-out and check-in photos of a car, angle by angle, in the web app" />
           </Reveal>
@@ -96,40 +97,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="soft" id="industries">
+      <section className="soft" id="how">
         <div className="wrap">
-          <Reveal as="h2" className="headline">Made for every business <br />that hands over keys.</Reveal>
-          <div className="cards">
-            {list.map((item, i) => (
-              <Reveal key={item.id} id={item.id} delay={delays[i % 2]}
-                className={cx('card', 'white', i === list.length - 1 && 'wide')}>
-                <p className="who">{item.who}</p>
-                <h3>{item.title}</h3>
-                <ul className="points">
-                  {item.points.map((point) => <li key={point}>{point}</li>)}
-                </ul>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="how">
-        <div className="wrap">
-          <Reveal as="h2" className="headline">Your team inspects. <br />The office sees it all.</Reveal>
-          <div className="steps-row">
+          <Reveal as="p" className="kicker red">How it works</Reveal>
+          <Reveal as="h2" delay={1} className="headline">Your team inspects. <br />The office sees it all.</Reveal>
+          <Reveal as="p" delay={2} className="lede">
+            Photo inspections at check-out and check-in, an AI check for new damage, a sealed report and the customer’s signature.
+          </Reveal>
+          <ol className="steps-row">
             {steps.map((step, i) => (
-              <Reveal key={step.screen} delay={delays[i]}>
-                <Iphone screen={step.screen} size="step" alt={step.alt} />
+              <Reveal as="li" key={step.title} delay={delays[i]}>
+                <Iphone screen={step.screen} size="step" alt={step.alt}>{step.drawn ? <StaffQrScreen /> : null}</Iphone>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
               </Reveal>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
-      <section className="soft" id="ai">
+      <section id="ai">
         <div className="wrap">
           <Reveal as="p" className="kicker red">AI damage detection</Reveal>
           <Reveal as="h2" delay={1} className="headline">New damage. <br />Flagged for you.</Reveal>
@@ -165,20 +152,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="soft" id="screens">
+      <section className="soft" id="industries">
         <div className="wrap">
-          <Reveal as="p" className="kicker red">Screenshots</Reveal>
-          <Reveal as="h2" delay={1} className="headline">See the apps.</Reveal>
-          <Reveal as="p" delay={2} className="lede">
-            Your team works on iPhone. The office sees the whole fleet in the web app.
-          </Reveal>
-          <Reveal><AppScreens /></Reveal>
-          <div className="columns four">
-            {webFeatures.map((item, i) => (
-              <Reveal key={item.title} delay={delays[i]}><b>{item.title}</b><span>{item.text}</span></Reveal>
+          <Reveal as="h2" className="headline">Made for every business <br />that hands over keys.</Reveal>
+          <div className="cards">
+            {list.map((item, i) => (
+              <Reveal key={item.id} id={item.id} delay={delays[i % 2]}
+                className={cx('card', 'white', list.length % 2 === 1 && i === list.length - 1 && 'wide')}>
+                <p className="who">{item.who}</p>
+                <h3>{item.title}</h3>
+                <ul className="points">
+                  {item.points.map((point) => <li key={point}>{point}</li>)}
+                </ul>
+              </Reveal>
             ))}
           </div>
-          <Reveal as="p" className="note">The web app is included with Enterprise.</Reveal>
         </div>
       </section>
 

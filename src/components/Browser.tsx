@@ -1,7 +1,7 @@
 // A web app screen in a plain browser window. The screens are screenshots of
 // the real web app (portal.vehicleprove.com) with sample vehicles.
 
-export type WebScreen = 'dashboard' | 'vehicles' | 'passport' | 'report' | 'compare' | 'service' | 'alerts';
+export type WebScreen = 'compare';
 
 type BrowserProps = {
   screen: WebScreen;

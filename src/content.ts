@@ -28,7 +28,23 @@ export const industries = (market: Market) => [
     id: 'insurance', who: 'Insurers and assessors', title: 'Photos you can trust.',
     points: ['Customers inspect on their own phone', 'Every photo fingerprinted and timestamped', 'A sealed report, ready to review'],
   },
+  {
+    id: 'workshops', who: 'Workshops and service centres', title: '“It wasn’t scratched when I dropped it off.” Settled.',
+    points: ['Condition photos at drop-off', 'Every job in the service history', 'The customer signs at pickup'],
+  },
 ];
+
+/** The industries in the top bar's Industries menu: the same cards, each in a line. */
+export const industryMenu = [
+  { id: 'rental', who: 'Car rental', blurb: 'Photos at pick-up and return that settle damage disputes' },
+  { id: 'fleets', who: 'Company fleets and delivery', blurb: 'Every vehicle checked, every renewal on time' },
+  { id: 'dealers', who: 'Used car dealers', blurb: 'Condition recorded at trade-in, a sealed report with every sale' },
+  { id: 'leasing', who: 'Leasing and car subscription', blurb: 'End-of-lease charges backed by proof' },
+  { id: 'insurance', who: 'Insurers and assessors', blurb: 'Customer photos you can trust, fingerprinted and timestamped' },
+  { id: 'workshops', who: 'Workshops and service centres', blurb: 'Condition recorded at drop-off, signed by the customer at pickup' },
+] as const;
+
+export type IndustryId = (typeof industryMenu)[number]['id'];
 
 /** The form's choices; the values match the backend (WebsiteLeadService). */
 export const businessTypes = [
@@ -38,6 +54,7 @@ export const businessTypes = [
   { value: 'delivery', label: 'Delivery or ride-hailing' },
   { value: 'leasing', label: 'Leasing or car subscription' },
   { value: 'insurance', label: 'Insurer or assessor' },
+  { value: 'workshop', label: 'Workshop or service centre' },
   { value: 'other', label: 'Something else' },
 ];
 

@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 // An app screen shown in an iPhone 17 Pro (Silver), seen from the front.
 // The frame is drawn in CSS, so it stays sharp at any size: --w on .iphone
 // sets the width and everything else scales from it.
@@ -12,8 +14,10 @@ const darkTop: ScreenName[] = ['camera'];
 type IphoneProps = {
   screen: ScreenName;
   alt: string;
-  /** Size class: the hero phone, a step in a row, a phone inside a tile, or one in the screenshot gallery. */
-  size: 'hero' | 'step' | 'tile' | 'gallery';
+  /** A screen drawn in HTML instead of the screenshot (for screens with no screenshot yet). */
+  children?: ReactNode;
+  /** Size class: the hero phone, a step in a row, or a phone inside a tile. */
+  size: 'hero' | 'step' | 'tile';
   /** Load straight away (the first image on the page) instead of when near. */
   eager?: boolean;
 };
@@ -22,10 +26,9 @@ const sizes: Record<IphoneProps['size'], string> = {
   hero: '(max-width: 600px) 66vw, 280px',
   step: '(max-width: 760px) 40vw, 230px',
   tile: '(max-width: 760px) 60vw, 210px',
-  gallery: '(max-width: 760px) 62vw, 240px',
 };
 
-export function Iphone({ screen, alt, size, eager = false }: IphoneProps) {
+export function Iphone({ screen, alt, size, eager = false, children }: IphoneProps) {
   const base = `/assets/img/screen-${screen}`;
   return (
     <div className={`iphone iphone-${size}`}>
@@ -35,7 +38,7 @@ export function Iphone({ screen, alt, size, eager = false }: IphoneProps) {
         <div className={darkTop.includes(screen) ? 'display dark' : 'display'}>
           <div className="status" aria-hidden="true"><span>9:41</span><StatusIcons /></div>
           <i className="island" />
-          <img
+          {children ? <div className="drawn" role="img" aria-label={alt}>{children}</div> : <img
             src={`${base}-800.webp`}
             srcSet={`${base}-400.webp 400w, ${base}-800.webp 800w`}
             sizes={sizes[size]}
@@ -44,7 +47,7 @@ export function Iphone({ screen, alt, size, eager = false }: IphoneProps) {
             alt={alt}
             loading={eager ? undefined : 'lazy'}
             decoding="async"
-          />
+          />}
         </div>
       </div>
     </div>

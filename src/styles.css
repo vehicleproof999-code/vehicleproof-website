@@ -43,7 +43,7 @@ a:hover { text-decoration: underline; }
   -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--hair);
 }
-.nav .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; width: min(100% - 44px, 1080px); }
+.nav .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .brand { display: flex; align-items: center; gap: 9px; flex: none; }
 .brand:hover { text-decoration: none; }
 .brand img { width: 29px; height: 29px; border-radius: 7px; }
@@ -58,6 +58,30 @@ a:hover { text-decoration: underline; }
 .nav-signin:hover { opacity: 1; text-decoration: none; }
 .hero-note { margin: 14px 0 0; color: var(--muted); font-size: 15px; text-align: center; }
 .plan-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+
+/* Industries in the top bar: an arrow that turns up, and a panel of industries under the bar. */
+.nav-links { align-items: center; }
+.nav-drop { position: relative; }
+.nav-drop summary, .sheet-group summary { list-style: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.nav-drop summary::-webkit-details-marker, .sheet-group summary::-webkit-details-marker { display: none; }
+.nav-drop summary { display: inline-flex; align-items: center; gap: 5px; color: var(--ink); opacity: .8; }
+.nav-drop summary:hover, .nav-drop[open] summary { opacity: 1; }
+.chevron { transition: transform .2s var(--ease); }
+.nav-drop[open] .chevron, .sheet-group[open] .chevron { transform: rotate(180deg); }
+.drop-panel {
+  position: absolute; top: calc(100% + 20px); left: 50%; transform: translateX(-50%); width: 620px; padding: 12px;
+  border: 1px solid var(--hair); border-radius: 18px; background: #fff; white-space: normal;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .3); animation: drop-in .2s var(--ease);
+}
+.drop-panel ul { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 0; padding: 0; list-style: none; }
+.nav-links .drop-panel a { opacity: 1; }
+.drop-panel li a { display: flex; align-items: flex-start; gap: 12px; padding: 12px; border-radius: 12px; color: var(--ink); }
+.drop-panel li a:hover { background: var(--soft); text-decoration: none; }
+.drop-panel b { display: block; font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+.drop-panel small { display: block; margin-top: 2px; color: var(--muted); font-size: 13px; line-height: 1.35; }
+.drop-icon { display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 10px; background: #fdecee; color: var(--red); }
+.nav-links .drop-all { display: inline-block; margin: 6px 12px 4px; color: var(--red); font-size: 14px; }
+@keyframes drop-in { from { opacity: 0; transform: translate(-50%, -6px); } }
 
 /* The menu on phones and tablets: three lines that turn into a cross, and a sheet under the bar. */
 .nav-menu { display: none; }
@@ -90,6 +114,12 @@ a:hover { text-decoration: underline; }
 .nav-sheet a[aria-current="page"] { color: var(--red); }
 .nav-sheet .pill { margin-top: 16px; min-height: 48px; }
 .nav-sheet a { animation: sheet-item .32s var(--ease) both; }
+/* Industries in the phone menu: a row that opens in place. */
+.nav-sheet .sheet-group { animation: sheet-item .32s var(--ease) both; border-bottom: 1px solid #ececef; }
+.sheet-group summary { display: flex; align-items: center; justify-content: space-between; padding: 13px 0; color: var(--ink); font-size: 18px; font-weight: 600; letter-spacing: -.02em; }
+.sheet-group ul { margin: 0; padding: 0 0 10px; list-style: none; }
+.nav-sheet .sheet-group a { display: flex; align-items: center; gap: 12px; padding: 8px 0; border: 0; font-size: 16px; font-weight: 500; letter-spacing: 0; animation: none; }
+.sheet-group .drop-icon { width: 34px; height: 34px; }
 .nav-menu.closing .nav-sheet { animation: sheet-out .16s ease-in forwards; }
 @keyframes sheet-in { from { opacity: 0; transform: translateY(-10px); } }
 @keyframes sheet-item { from { opacity: 0; transform: translateY(8px); } }
@@ -141,6 +171,8 @@ section { padding: clamp(76px, 11vw, 110px) 0; text-align: center; }
 .iphone .display {
   position: relative; height: 100%; overflow: hidden; display: flex; flex-direction: column;
   border-radius: calc(var(--w) * .145); background: #f3f6f9; color: #000;
+  /* .display is also the hero headline's class: undo its spacing (the status bar's 9:41, drawn screens). */
+  letter-spacing: normal; text-wrap: wrap;
 }
 .iphone .display.dark { background: #000; color: #fff; }
 .iphone .status {
@@ -163,9 +195,35 @@ section { padding: clamp(76px, 11vw, 110px) 0; text-align: center; }
 .iphone .camera-control { top: 60%; height: 6.5%; }
 
 /* ---------- Inspections: three phones in a row ---------- */
-.steps-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 70px; }
+.steps-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin: 64px 0 0; padding: 0; list-style: none; counter-reset: step; }
+.steps-row .iphone { --w: 200px; }
+/* The step's number, drawn here so it isn't part of the heading's text. */
+.steps-row h3::before {
+  counter-increment: step; content: counter(step);
+  display: inline-grid; place-items: center; width: 26px; height: 26px; margin-right: 10px; border-radius: 50%;
+  background: var(--red); color: #fff; font-size: 14px; font-weight: 700; vertical-align: 3px;
+}
 .steps-row h3 { margin: 26px 0 6px; }
-.steps-row p { color: var(--muted); font-size: 16px; line-height: 1.45; max-width: 250px; margin: 0 auto; }
+.steps-row > li > p { color: var(--muted); font-size: 15px; line-height: 1.45; max-width: 240px; margin: 0 auto; }
+
+/* ---------- How it works, step 4: the sign-off QR code, drawn in em from the phone's width ---------- */
+.iphone .drawn {
+  flex: 1; min-height: 0; overflow: hidden; font: 400 calc(var(--w) * .046)/1.3 Inter, system-ui, sans-serif;
+}
+.sign-screen { height: 100%; padding: 0 1.05em; display: flex; flex-direction: column; gap: .55em; }
+.sign-screen p { margin: 0; }
+.sign-nav { color: var(--red); font-size: .85em; font-weight: 600; }
+.sign-title { font-size: 1.45em; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
+.sign-card { display: flex; flex-direction: column; gap: .15em; padding: .75em .85em; border-radius: .8em; background: #fff; box-shadow: 0 1px 2px rgba(0, 0, 0, .06); }
+.sign-card b { font-size: .95em; }
+.sign-card span { color: var(--muted); font-size: .78em; }
+.sign-vehicle .sealed { color: #16a34a; font-weight: 600; }
+.sign-qr { align-items: center; text-align: center; padding: 1em .85em .9em; }
+.sign-qr svg { width: 72%; aspect-ratio: 1; margin-bottom: .6em; fill: #111; }
+.sign-buttons { display: grid; gap: .45em; }
+.sign-buttons span { padding: .62em; border-radius: .7em; background: #fff; border: 1px solid #e3e6ea; font-size: .78em; font-weight: 600; text-align: center; }
+.sign-buttons span:first-child { background: var(--red); border-color: var(--red); color: #fff; }
+
 
 /* ---------- Business: one card per kind of business ---------- */
 .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 60px; text-align: left; }
@@ -187,37 +245,6 @@ section { padding: clamp(76px, 11vw, 110px) 0; text-align: center; }
 .browser.small .bar i { width: 8px; height: 8px; }
 .web-main { margin-top: 64px; }
 
-/* ---------- Screenshots: a tab for each app, and a row of screens to scroll ---------- */
-.screens { margin-top: 48px; }
-.screens-bar { display: flex; align-items: center; justify-content: center; position: relative; }
-.screens-tabs { display: inline-flex; padding: 4px; border-radius: 999px; background: #e8e8ed; }
-.screens-tabs button {
-  min-height: 40px; padding: 0 22px; border: 0; border-radius: 999px; background: none;
-  font: inherit; font-size: 15px; font-weight: 600; color: var(--muted); cursor: pointer;
-}
-.screens-tabs button[aria-selected="true"] { background: #fff; color: #1d1d1f; box-shadow: 0 1px 4px rgba(0, 0, 0, .12); }
-.screens-arrows { position: absolute; right: 0; display: flex; gap: 10px; }
-.screens-arrows button {
-  width: 40px; height: 40px; border: 0; border-radius: 50%; background: #e8e8ed; color: #1d1d1f;
-  font: 400 26px/1 Inter, sans-serif; cursor: pointer; padding-bottom: 3px;
-}
-.screens-arrows button:hover { background: #dcdce1; }
-/* The row runs into the page's side margins, so screens slide in from the edge. */
-.screens-row {
-  list-style: none; margin: 30px -22px 0; padding: 20px 22px 40px;
-  display: flex; gap: 28px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 22px; scrollbar-width: none;
-}
-.screens-row::-webkit-scrollbar { display: none; }
-.screens-row[hidden] { display: none; }
-.screens-row li { flex: none; scroll-snap-align: start; }
-.screens-row p { margin: 18px 0 0; font-size: 16px; font-weight: 600; }
-.screens-row.web li { width: min(720px, 86vw); }
-.screens-row.web .browser { box-shadow: 0 22px 30px -24px rgba(0, 0, 0, .3); }
-/* A tighter shadow, so the scrolling row doesn't cut it off at its edges. */
-.iphone.iphone-gallery {
-  --w: min(240px, 62vw);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .7), 0 0 0 1px rgba(0, 0, 0, .1), 0 22px 30px -24px rgba(0, 0, 0, .4);
-}
 .web-more { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
 .web-more p { margin: 12px 0 0; font-size: 14px; color: var(--muted); }
 
@@ -339,9 +366,6 @@ th { font-weight: 600; font-size: 13px; color: var(--muted); text-transform: upp
 .card .points li { position: relative; padding-left: 22px; font-size: 15px; color: var(--ink); }
 .card .points li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 8px; height: 8px; border-radius: 50%; background: var(--red); }
 .card.wide .points { grid-template-columns: repeat(3, 1fr); }
-.chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 30px; }
-.chips a { font-size: 14px; color: var(--ink); background: var(--soft); border-radius: 999px; padding: 7px 14px; transition: background-color .2s; }
-.chips a:hover { background: var(--hair); text-decoration: none; }
 #contact .lead-done { background: #fff; }
 
 
@@ -402,13 +426,12 @@ th { font-weight: 600; font-size: 13px; color: var(--muted); text-transform: upp
 
 /* ---------- Smaller screens ---------- */
 /* A press answers at once on a touch screen. */
-.pill, .chips a { -webkit-tap-highlight-color: transparent; }
+.pill { -webkit-tap-highlight-color: transparent; }
 .pill { transition: background-color .2s, transform .15s var(--ease); }
-.chips a { transition: background-color .2s, transform .15s var(--ease); }
-.pill:active, .chips a:active { transform: scale(.97); }
+.pill:active { transform: scale(.97); }
 
-/* The seven links no longer fit beside the name, Sign in and the trial button. */
-@media (max-width: 1120px) {
+/* The links no longer fit beside the name, Sign in and the trial button. */
+@media (max-width: 960px) {
   .nav-links { display: none; }
   .nav-signin { display: none; }
   .nav-menu { display: block; }
@@ -417,10 +440,10 @@ th { font-weight: 600; font-size: 13px; color: var(--muted); text-transform: upp
 /* Four price cards would be too narrow side by side. */
 @media (max-width: 1000px) {
   .columns.all-plans { grid-template-columns: 1fr 1fr; }
+  /* Four steps: two by two. */
+  .steps-row { grid-template-columns: 1fr 1fr; row-gap: 56px; }
 }
-/* Tablets: three phones in a row, scaled to fit the columns. */
 @media (max-width: 900px) {
-  .iphone-step { --w: min(230px, 25vw); }
   .columns.four { grid-template-columns: 1fr 1fr; }
 }
 /* Phones */
@@ -446,8 +469,6 @@ th { font-weight: 600; font-size: 13px; color: var(--muted); text-transform: upp
   .hero-phone { margin-top: 44px; }
   .links-row { flex-direction: column; align-items: center; gap: 6px; margin-top: 22px; }
   .links-row .link-arrow { padding: 10px 14px; }
-  .chips { margin-top: 18px; }
-  .chips a { padding: 11px 15px; }
 
   /* Each step: the phone beside its text, not three full phones one after another. */
   .steps-row { grid-template-columns: 1fr; gap: 30px; margin-top: 40px; }
@@ -456,7 +477,7 @@ th { font-weight: 600; font-size: 13px; color: var(--muted); text-transform: upp
   }
   .steps-row .iphone { grid-row: 1 / -1; --w: min(150px, 40vw); }
   .steps-row h3 { grid-row: 2; margin: 0 0 6px; }
-  .steps-row p { grid-row: 3; margin: 0; max-width: none; }
+  .steps-row > li > p { grid-row: 3; margin: 0; max-width: none; }
 
   .plan, .all-plans .plan { padding: 26px 24px; }
   .plan a { padding: 10px 0; margin-top: 6px; }
@@ -465,9 +486,7 @@ th { font-weight: 600; font-size: 13px; color: var(--muted); text-transform: upp
   .slider input[type="range"]::-moz-range-thumb { width: 28px; height: 28px; }
   .slider .range-ends { margin-top: -4px; }
 
-  .screens { margin-top: 36px; }
   .browser .bar span { padding: 3px 20px; }
-  .screens-arrows { display: none; }
 
   .lead-grid, .columns.two, .card.wide .points { grid-template-columns: 1fr; }
   .card.wide { grid-column: auto; }
@@ -489,7 +508,8 @@ th { font-weight: 600; font-size: 13px; color: var(--muted); text-transform: upp
   .headline { font-size: 32px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .nav-sheet, .nav-sheet a, .faq details[open] p { animation: none; }
-  .burger i, .pill, .chips a { transition: none; }
-  .pill:active, .chips a:active { transform: none; }
+  .nav-sheet, .nav-sheet a, .nav-sheet .sheet-group, .drop-panel, .faq details[open] p { animation: none; }
+  .chevron { transition: none; }
+  .burger i, .pill { transition: none; }
+  .pill:active { transform: none; }
 }
