@@ -4,6 +4,7 @@ import { LeadForm } from '../components/LeadForm';
 import { Plans } from '../components/Plans';
 import { Reveal } from '../components/Reveal';
 import { StaffQrScreen } from '../components/SignScreens';
+import { WebAppTour } from '../components/WebAppTour';
 import { faqs, industries } from '../content';
 import { LOCAL, useMarket, type Market } from '../market';
 import { cx, trialHref } from '../site';
@@ -32,6 +33,16 @@ const steps: { screen: ScreenName; title: string; text: string; alt: string; dra
   },
 ];
 
+
+/** What else the web app does, beyond the five screens in the tour. */
+const webFeatures = [
+  { title: 'Reports to share', text: 'Sealed inspection reports as PDF or CSV, for customers and insurers.' },
+  { title: 'Customer sign-off', text: 'Signing links by WhatsApp or email, or sign on a tablet at the counter.' },
+  { title: 'Service history and costs', text: 'Every job, receipt and expense, vehicle by vehicle.' },
+  { title: 'Documents read for you', text: 'Policy and renewal details read from a PDF or photo.' },
+  { title: 'Backup to Google Drive', text: 'A copy of your records in your own Google Drive.' },
+  { title: 'Devices', text: 'See every signed-in phone and computer, and sign one out.' },
+];
 
 /** AI damage detection: what it compares, what it finds, and who decides. */
 const aiPoints = [
@@ -136,6 +147,22 @@ export default function Home() {
           <Reveal as="p" className="note">
             AI can miss damage or flag a mark that isn't damage, so it guides your team's review rather than replacing it.
           </Reveal>
+        </div>
+      </section>
+
+      <section className="soft" id="web-app">
+        <div className="wrap">
+          <Reveal as="p" className="kicker red">For the office</Reveal>
+          <Reveal as="h2" delay={1} className="headline">Your whole fleet, <br />in the browser.</Reveal>
+          <Reveal as="p" delay={2} className="lede">
+            The web app comes with Enterprise. Sign in at portal.vehicleprove.com with the same account as the phone app.
+          </Reveal>
+          <Reveal><WebAppTour market={market} /></Reveal>
+          <div className="columns three web-features">
+            {webFeatures.map((item, i) => (
+              <Reveal key={item.title} delay={delays[i % 3]}><b>{item.title}</b><span>{item.text}</span></Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
